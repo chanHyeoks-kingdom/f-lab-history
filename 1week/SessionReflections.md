@@ -2,7 +2,7 @@
 
 # 1주차 회고
 
-[f-lab 멘토링 1주차 질문에 대한 결론.pdf](https://github.com/chanHyeoks-kingdom/f-lab-history/files/13843206/f-lab.1.pdf)
+[1주차 멘토링 질문에 대한 내 답변.pdf](https://github.com/chanHyeoks-kingdom/f-lab-history/files/13849022/1.pdf)
 ```
 이번주는 3가지 질문에 대한 답을 찾는 과정이었다.
 (1) 객체지향 프로그래밍이란? (2) 추상화/상속/다형성/캡슐화 (3) 자바의 컴파일 과정
