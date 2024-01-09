@@ -2,3 +2,5 @@
 
 
 [thread-safety2](https://github.com/WeareSoft/tech-interview/blob/master/contents/os.md#thread-safe)
+
+[중요](https://velog.io/@cateto/Java-Thread-Safe%EB%9E%80)
