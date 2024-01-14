@@ -41,7 +41,7 @@ JVM은 프로세스지만 효율적인 메모리 관리를 위해 내부적으�
 
 <img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/16c12151-84fc-496b-87ce-b6c491b26866" width="500">
 
-* [그림1]. JVM 가상 메모리 구조의 PC 영역*
+* [그림1]. JVM 가상 메모리 구조의 PC 영역
 
 <br>
 
@@ -55,7 +55,7 @@ Stack 영역은 '메서드 호출 정보'가 담긴 '스택 프레임'을 후입
 
 <img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/659e5789-cf53-4611-b275-5ce6b6cc5de6" width="500">
 
-* [그림2]. JVM의 스택 메모리 영역*
+* [그림2]. JVM의 스택 메모리 영역
 
 ```
 사실 우리는 이 스택 정보를 많이 접해봤는데 바로 '스택 트레이스'가 그 예이다. 우리가 에러를 냈을 때 아래와 같은 해당 스레드의 흐름 정보를 볼 수
@@ -63,7 +63,9 @@ Stack 영역은 '메서드 호출 정보'가 담긴 '스택 프레임'을 후입
 ```
 
 <img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/20a183c8-7a83-43f8-a3d5-e49ba3d8c4c8" width="500">
-* [그림3]. Case1: StackTrace*
+<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/ef17a3e8-9f21-4384-9c97-014b6bc76e97" width="500">
+
+* [그림3]. Case1: StackTrace
 
 ```
 이렇게 스레드 별로 메서드 호출 흐름을 담는 역할을 하다보니 "메소드 호출이 굉장히 많이 일어나고 깊게 일어나는 경우", 예컨대 재귀함수를 잘못 쓰는 경우
@@ -77,14 +79,37 @@ Stack 영역은 '메서드 호출 정보'가 담긴 '스택 프레임'을 후입
 
 #### Q2. PC 영역은 뭐야?
 <img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/8c94325a-b092-482a-9bb9-def0e702fc4f" width="500">
-* [그림4]. JVM의 PC 영역*
+
+* [그림4]. JVM의 PC 영역
 
 ```
-결국 
+PC 영역은 Stack 영역의 메서드 흐름이 어디까지 진행되고 있는지 정보를 기록하기 위해 필요한 영역이다. 결국 하나의 작업을 직렬 처리하는게 아니기
+때문에 작업이 끝날 떄 까지 CPU 점유하지 않을 수 있다. 그래서 해당 작업이 어디까지 진행됐는지 기록 한다.
 ```
 
+<br>
 
+#### Q3. Native Method Stack 영역은 뭐야?
+<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/9905fc49-174d-405d-8997-e26a15a627db" width="500">
+<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/80ffac9c-0a90-4db7-9baa-62d3a32dd344" width="500">
 
+* [그림5]. Native Method 영역에 대해서
+
+```
+자바 프로그램도 내부적으로 C로 구현된 메서드들을 사용하는데 'native' 키워드를 통해 JNI를 호출해 실제 네이티브 라이브러리에 있는 c 코드를 호출
+할 수 있다. 이 때도 마찬가지로 작업 흐름이 쌓일텐데 이를 저장하는 영역이다.
+```
+
+<br>
+
+#### Q4. Method 영역은 뭐야?
+<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/ffb47350-a2de-4544-937e-174a0a587929" width="500">
+
+* [그림6]. Method 영역에 대해서
+
+```
+Method 영역은 
+```
 
 
 
