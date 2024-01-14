@@ -122,6 +122,9 @@ java 8 버전부터 metaspace라는 이름의 영역으로 분리되어 나왔�
 
 #### Q5. Heap 영역은 뭐야?
 <img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/b925fcc7-9214-47e8-8565-9814d190239b" width="500">
+<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/ea8004ce-494f-444c-8794-514a3a523900" width="500">
+
+
 
 ```
 Heap 영역은 우리가 객체나 배열을 생성할 때 동적 정보를 저장하기 위한 가상 영역이다. Minor, Major, Full GC의 영향을 받는 영역이다.
