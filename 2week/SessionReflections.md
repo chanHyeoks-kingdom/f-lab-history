@@ -128,6 +128,9 @@ java 8 버전부터 metaspace라는 이름의 영역으로 분리되어 나왔�
 Heap 영역은 우리가 객체나 배열을 생성할 때 동적 정보를 저장하기 위한 가상 영역이다. Minor, Major, Full GC의 영향을 받는 영역이다.
 ```
 
+<br> 
+
+----
 
 ## 2. 자바 Garbage Collector에 대해서
 
@@ -146,15 +149,30 @@ GC를 간단히 설명하면 안쓰는 객체를 회수하는 녀석이다.
 ```
 오늘 이해해볼 내용은
 
-1. GC의 알고리즘엔 어떤게 있는지
-2. Garbage Collection을 모니터링 하는 방법
-3. 메모리 설정(?)시 고려사항: 정확히 어떤 메모리 설정?
-4. GC 모니터링 툴들에 대해서 리뷰
-5. GC를 튜닝 한다는 것 (설정 조정이 minor/major Gc에 미치는 영향)
-6. Heap에 대한 GC와 method에 대한 GC의 차이
+1. GC의 청소 대상
+2. GC의 청소 방식
+3. GC의 알고리즘엔 어떤게 있는지
+4. Garbage Collection을 모니터링 하는 방법
+5. 메모리 설정(?)시 고려사항: 정확히 어떤 메모리 설정?
+6. GC 모니터링 툴들에 대해서 리뷰
+7. GC를 튜닝 한다는 것 (설정 조정이 minor/major Gc에 미치는 영향)
+8. Heap에 대한 GC와 method에 대한 GC의 차이
 ```
 
+개진상
+<br>
+
+#### Q1. GC의 청소 대상에 대해서
+<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/8c94325a-b092-482a-9bb9-def0e702fc4f" width="500">
+
+* [그림4]. JVM의 PC 영역
+
+```
+GC는 어떤 객체들을 청소할까? 아무거나 쓸어담는다면 GC(Garbage Collector)가 아니라 (Object Destoryer)라고 불리게 됐을 것이다.
+나름대로 청소를 하는 규칙이 있다는데 그 기준이 어떤건지 오늘 다뤄보려고 한다.
+```
 
 <br>
 
-```
+
+
