@@ -111,6 +111,24 @@ PC 영역은 Stack 영역의 메서드 흐름이 어디까지 진행되고 있�
 
 ```
 Method 영역은 Class나 method의 '메타 데이터'들을 저장하는 공간이다. 사실 java 8 이전에는 Heap 영역 하위에 Permanent Generation 영역에 구현돼 있었으나
+java 8 버전부터 metaspace라는 이름의 영역으로 분리되어 나왔다. 이 때부터 더 이상 jvm의 java heap이 아닌 native heap 영역에 속하게 된다. 덕분에 jvm 메
+모리에 독립적으로 사용할 수 있게 된 셈이다.
+```
+
+
+
+
+<br>
+
+#### Q4. Method 영역은 뭐야?
+<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/b925fcc7-9214-47e8-8565-9814d190239b" width="500">
+
+
+
+* [그림6]. Method 영역에 대해서
+
+```
+Method 영역은 Class나 method의 '메타 데이터'들을 저장하는 공간이다. 사실 java 8 이전에는 Heap 영역 하위에 Permanent Generation 영역에 구현돼 있었으나
 ```
 
 
