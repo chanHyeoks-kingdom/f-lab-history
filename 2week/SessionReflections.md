@@ -120,35 +120,21 @@ java 8 버전부터 metaspace라는 이름의 영역으로 분리되어 나왔�
 
 <br>
 
-#### Q4. Method 영역은 뭐야?
+#### Q5. Heap 영역은 뭐야?
 <img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/b925fcc7-9214-47e8-8565-9814d190239b" width="500">
 
-
-
-* [그림6]. Method 영역에 대해서
-
 ```
-Method 영역은 Class나 method의 '메타 데이터'들을 저장하는 공간이다. 사실 java 8 이전에는 Heap 영역 하위에 Permanent Generation 영역에 구현돼 있었으나
+Heap 영역은 우리가 객체나 배열을 생성할 때 동적 정보를 저장하기 위한 가상 영역이다. Minor, Major, Full GC의 영향을 받는 영역이다.
 ```
 
 
-
-
-
-
-
-```
-contents 2
-```
-<br>
-
-## 2. subject 2 ..
+## 2. 자바 Garbage Collector에 대해서
 
 ```
 ..
 ```
 
-####  "객체지향은 복잡한 시스템을 이해하기 쉬운 형태로 만들기 위해서 써야 한다."
+####  "쓰레기 청소부"
 
 <br>
 
