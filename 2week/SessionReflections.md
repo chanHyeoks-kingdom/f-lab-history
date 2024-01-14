@@ -134,10 +134,28 @@ Heap 영역은 우리가 객체나 배열을 생성할 때 동적 정보를 저�
 ## 2. 자바 Garbage Collector에 대해서
 
 ```
-..
+GC를 간단히 설명하면 안쓰는 객체를 회수하는 녀석이다. 
 ```
 
+> [@고민해볼 관점]
+> 
+> GC 각 알고리즘의 차이점, Garbage Collection 모니터링과 메모리 설정시 고려 사항, GC 모니터링 툴(jstat, visualvm, HPJMeter, YourKit),
+> GC 튜닝(설정 조정이 minot/major GC에 미치는 영향), 
+
+
 ####  "쓰레기 청소부"
+
+```
+오늘 이해해볼 내용은
+
+1. GC의 알고리즘엔 어떤게 있는지
+2. Garbage Collection을 모니터링 하는 방법
+3. 메모리 설정(?)시 고려사항: 정확히 어떤 메모리 설정?
+4. GC 모니터링 툴들에 대해서 리뷰
+5. GC를 튜닝 한다는 것 (설정 조정이 minor/major Gc에 미치는 영향)
+6. Heap에 대한 GC와 method에 대한 GC의 차이
+```
+
 
 <br>
 
