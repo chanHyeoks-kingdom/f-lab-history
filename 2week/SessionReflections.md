@@ -1,5 +1,3 @@
-
-
 # 2주차 회고
 
 [2주차 멘토링 질문에 대한 내 답변.pdf](-)
@@ -41,12 +39,58 @@ JVM은 프로세스지만 효율적인 메모리 관리를 위해 내부적으�
 으로 아래 그림처럼 다섯가지 영역으로 나뉜다. 
 ```
 
-#### "대부분의 소프트웨어는 필연적으로 변경되는데 만약 서비스가 복잡해져 이해하기 어려운 상태가 된다면 소프트웨어는 지속적으로 변경될 수 없다."
+<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/16c12151-84fc-496b-87ce-b6c491b26866" width="500">
 
-![image](https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/3e6df0d9-4759-4dea-aa2e-7f4492db8451)
-
+* [그림1]. JVM 가상 메모리 구조의 PC 영역*
 
 <br>
+
+--- 
+
+#### Q1. Stack 영역은 뭐야?
+```
+Stack 영역은 '메서드 호출 정보'가 담긴 '스택 프레임'을 후입선출(LIFO) 구조로 쌓는 영역이다. 쓰레드별로 하나씩 생성되며 쓰레드의 메서드 흐름을
+관리하기 위한 영역으로 보면 된다.
+```
+
+<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/659e5789-cf53-4611-b275-5ce6b6cc5de6" width="500">
+
+* [그림2]. JVM의 스택 메모리 영역*
+
+```
+사실 우리는 이 스택 정보를 많이 접해봤는데 바로 '스택 트레이스'가 그 예이다. 우리가 에러를 냈을 때 아래와 같은 해당 스레드의 흐름 정보를 볼 수
+있는데 이건 사실 스택 영역에 적재된 내용들을 pop 해서 보여주는 것이다.
+```
+
+<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/20a183c8-7a83-43f8-a3d5-e49ba3d8c4c8" width="500">
+* [그림3]. Case1: StackTrace*
+
+```
+이렇게 스레드 별로 메서드 호출 흐름을 담는 역할을 하다보니 "메소드 호출이 굉장히 많이 일어나고 깊게 일어나는 경우", 예컨대 재귀함수를 잘못 쓰는 경우
+등의 문제가 발생했을 때 그 유명한 'StackOverflow' 라는 이름의 에러가 뜬다. 지금 생각해보면 이것도 이 스택 영역이 꽉 찼다는 의미로 받아들이면 될 거 같다.
+```
+---
+
+<br>
+
+--- 
+
+#### Q2. PC 영역은 뭐야?
+<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/8c94325a-b092-482a-9bb9-def0e702fc4f" width="500">
+* [그림4]. JVM의 PC 영역*
+
+```
+결국 
+```
+
+
+
+
+
+
+
+
+
 
 ```
 contents 2
