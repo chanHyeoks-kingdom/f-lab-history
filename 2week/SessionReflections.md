@@ -103,12 +103,14 @@ PC 영역은 Stack 영역의 메서드 흐름이 어디까지 진행되고 있�
 <br>
 
 #### Q4. Method 영역은 뭐야?
-<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/ffb47350-a2de-4544-937e-174a0a587929" width="500">
+<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/b925fcc7-9214-47e8-8565-9814d190239b" width="500">
+
+
 
 * [그림6]. Method 영역에 대해서
 
 ```
-Method 영역은 
+Method 영역은 Class나 method의 '메타 데이터'들을 저장하는 공간이다. 사실 java 8 이전에는 Heap 영역 하위에 Permanent Generation 영역에 구현돼 있었으나
 ```
 
 
