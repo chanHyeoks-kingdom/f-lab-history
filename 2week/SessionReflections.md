@@ -243,7 +243,7 @@ java -XX:+UseSerialGC -jar Application.java
 
 <img src ="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/07d25272-ed71-4276-aafd-671699bafb76" width="400">
 
-* [그림12]. Parallel GC
+* [그림13]. Parallel GC
 
 ```
 # setting method
@@ -261,7 +261,7 @@ java -XX:+UseParallelGC -jar Application.java                  @ -XX:ParallelGCT
 
 <img src ="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/c38787b7-a68c-41bd-991d-b85ada9a6f8f" width="400">
 
-* [그림12]. Parallel GC
+* [그림14]. Parallel GC
 
 ```
 # setting method
@@ -270,3 +270,23 @@ java -XX:+UseParallelOldGC -jar Application.java              @ -XX:ParallelGCTh
 
 <br>
 
+
+---
+> [@CMS GC (Concurrent Mark Sweep)
+>
+> - STW(Stop-The-World)를 줄이기 위해 고안된 GC.
+> - 이를 위해 '마킹'과 같은 특정 단계에선 애플리케이션 쓰레드와 GC 쓰레드가 동시에 작업할 수 있도록 해줘 StopTheWorld를 줄였다.
+> - 실제로 STW는 줄었지만 GC가 복잡해지고, CPU 사용률이 높아진다는 한계가 있어 java 9 부터 deprecated되었고 java 14부터 지원 중지됐다.
+
+<img width="500" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/66380ce2-bd6d-4b59-b16c-71b32ea06b1a">
+
+
+* [그림15]. Parallel GC
+
+```
+# setting method
+# deprecated in java9 and finally dropped in java14
+java -XX:+UseConcMarkSweepGC -jar Application.java
+```
+
+<br>
