@@ -216,17 +216,17 @@ GC는 어떤 객체들을 청소할까? 아무거나 쓸어담는다면 GC(Garba
 GC는 사실 종류가 많다. 또 애플리케이션을 띄울 때 내 마음대로 선택할 수 있어서 'GC 튜닝'이래봐야 그냥 GC 선택하는 옵션 주는고 메모리 설정좀 바꾸는거다.
 ```
 
-<img src ="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/3ea087f3-6037-4dcb-ba20-99e405d33321" width="400">
 
-* [그림12]. Serialize GC
-
+---
 > [@Serial GC]
 >
 > - 과거 CPU가 한개일 때 만들어진 GC이다. 그래서 현대의 멀티 코어나 멀티 CPU 시스템에는 최적화된 성능을 보장할 수 없다.
 > - 때문에 지금은 잘 쓰지 않는 방식이지만, Device 성능이 제한적이어서 하나의 코어만 사용하는 시스템에는 적용을 고려해볼 수 있을 거 같다.
 > - STW(Stop-The-World) 시간도 다른 GC에 비해 비교적 긴 편이다.
 
+<img src ="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/3ea087f3-6037-4dcb-ba20-99e405d33321" width="400">
 
+* [그림12]. Serialize GC
 
 
 
