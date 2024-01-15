@@ -338,7 +338,7 @@ java -XX:+UseShenandoahGC -jar Application.java
 > - G1이 Region을 이용한 것 처럼 ZGC도 ZPAGE라는 개념을 이용한다. Region과의 차이점은 Region은 정적인데 비해 ZPAGE는 2mb 배수 동적으로 운영된다.
 > - 최대 장점은 힙 크기가 아무리 커져도 STW 시간이 절대 10ms를 넘지 않는다는 것 이다.
 
-<img width="500" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/99dc1b18-0993-4c27-950b-bd31576495e2">
+<img width="500" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/75f39988-fcd5-4a63-b98d-b500a78e2c5e">
 
 
 * [그림15]. ZGC
