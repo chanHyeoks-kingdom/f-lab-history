@@ -188,4 +188,19 @@ GC는 어떤 객체들을 청소할까? 아무거나 쓸어담는다면 GC(Garba
 <br>
 
 
+#### Q1. 2. GC의 청소 방식에 대해서
+
+<img src ="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/7dfc7281-2c74-4846-ae66-45fc351853ec" width="500">
+
+* [그림10]. MARK AND SWEEP
+
+
+```
+앞서 간단히 설명했듯이 root space부터 그래프 탐색을 진행해 연결된 객체들에 대한 '마킹 작업'을 수행하고 그렇지 연결되지 않은 객체들을 제거(SWEEP)
+하는 방식이다. GC에 따라 다르지만 메모리 단편화를 없애기 위해 앞에서부터 순차적으로 채워주는 Compact작업도 수행하곤 한다.
+```
+
+
+
+<br>
 
