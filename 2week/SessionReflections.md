@@ -23,7 +23,7 @@
 > [@고민해볼 관점]
 > 
 > GC 각 알고리즘의 차이점, Garbage Collection 모니터링과 메모리 설정시 고려 사항, GC 모니터링 툴(jstat, visualvm, HPJMeter, YourKit),
-> GC 튜닝(설정 조정이 minot/major GC에 미치는 영향), minor GC vs major GC 과정과 차이점, 메모리 누수 발견 및 해결 방법,
+> GC 튜닝(설정 조정이 minor/major GC에 미치는 영향), minor GC vs major GC 과정과 차이점, 메모리 누수 발견 및 해결 방법,
 >  Thread Safety를 항상 고려해서 코딩을 해야하는 이유, Deadlock이 발생하는 상황들과 방지법, 동기화 문제 종류 및 발견 방법과 방지하는 법,
 > 실제 코딩 작성시 고려 사항, Java Stacktrace란, Static 키워드 사용시 주의점(메모리 누수), Final 키워드 선택 원칙
 
@@ -188,7 +188,7 @@ GC는 어떤 객체들을 청소할까? 아무거나 쓸어담는다면 GC(Garba
 <br>
 
 
-#### Q1. 2. GC의 청소 방식에 대해서
+#### Q2. GC의 청소 방식에 대해서
 
 <img src ="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/7dfc7281-2c74-4846-ae66-45fc351853ec" width="500">
 
@@ -198,6 +198,22 @@ GC는 어떤 객체들을 청소할까? 아무거나 쓸어담는다면 GC(Garba
 ```
 앞서 간단히 설명했듯이 root space부터 그래프 탐색을 진행해 연결된 객체들에 대한 '마킹 작업'을 수행하고 그렇지 연결되지 않은 객체들을 제거(SWEEP)
 하는 방식이다. GC에 따라 다르지만 메모리 단편화를 없애기 위해 앞에서부터 순차적으로 채워주는 Compact작업도 수행하곤 한다.
+```
+
+
+
+<br>
+
+
+#### Q3. GC의 알고리즘엔 어떤게 있는지 ..
+
+<img src ="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/f9b6c3b4-20f9-4784-ab34-cc28e3567cd4" width="400">
+
+* [그림10]. MARK AND SWEEP
+
+
+```
+GC는 사실 종류가 많다. 또 애플리케이션을 띄울 때 내 마음대로 선택할 수 있어서 'GC 튜닝'이래봐야 그냥 GC 선택하는 옵션 주는고 메모리 설정좀 바꾸는거다.
 ```
 
 
