@@ -292,7 +292,7 @@ java -XX:+UseConcMarkSweepGC -jar Application.java
 <br>
 
 ---
-> [G1 GC (Garbage First)]
+> [@G1 GC (Garbage First)]
 >
 > - 기존의 CMS GC을 대체하기 위해 java 7에서 처음 release된 GC
 > - 자바 9+ 버전의 Default GC이다.
