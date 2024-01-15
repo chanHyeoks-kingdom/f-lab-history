@@ -303,7 +303,7 @@ java -XX:+UseConcMarkSweepGC -jar Application.java
 <img width="500" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/cb2ee09e-6424-4e92-9d13-5e7b121d0962">
 
 
-* [그림15]. G1 GC (Garbage First)
+* [그림16]. G1 GC (Garbage First)
 
 ```
 # setting method
@@ -322,7 +322,7 @@ java -XX:+UseG1GC -jar Application.java
 <img width="500" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/99dc1b18-0993-4c27-950b-bd31576495e2">
 
 
-* [그림15]. Shenandoah GC
+* [그림17]. Shenandoah GC
 
 ```
 # setting method
@@ -341,7 +341,7 @@ java -XX:+UseShenandoahGC -jar Application.java
 <img width="500" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/75f39988-fcd5-4a63-b98d-b500a78e2c5e">
 
 
-* [그림15]. ZGC
+* [그림18]. ZGC
 
 ```
 # setting method
