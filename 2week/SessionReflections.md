@@ -180,6 +180,7 @@ GC는 어떤 객체들을 청소할까? 아무거나 쓸어담는다면 GC(Garba
 > - '참조 없는 상태를 파악하는 방법은, RootSpace부터 그래프 순회를 통해 연결된 객체들을 마킹하고 마크가 없는 객체들을 제거한다.
 
 <img src ="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/d38c224f-0b88-406b-be81-016aa5ed58b3" width="400">
+<img src ="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/da64bc28-9810-439a-bc72-9498cd29849e" width="600">
 
 * [그림9]. 그래프 탐색과 마킹
 
