@@ -272,7 +272,7 @@ java -XX:+UseParallelOldGC -jar Application.java              @ -XX:ParallelGCTh
 
 
 ---
-> [@CMS GC (Concurrent Mark Sweep)
+> [@CMS GC (Concurrent Mark Sweep)]
 >
 > - STW(Stop-The-World)를 줄이기 위해 고안된 GC.
 > - 이를 위해 '마킹'과 같은 특정 단계에선 애플리케이션 쓰레드와 GC 쓰레드가 동시에 작업할 수 있도록 해줘 StopTheWorld를 줄였다.
@@ -290,3 +290,26 @@ java -XX:+UseConcMarkSweepGC -jar Application.java
 ```
 
 <br>
+
+---
+> [G1 GC (Garbage First)]
+>
+> - 기존의 CMS GC을 대체하기 위해 java 7에서 처음 release된 GC
+> - 자바 9+ 버전의 Default GC이다.
+> - 기존의 Old, Young 영역이 아닌 region이라는 개념 처음 도입
+> - 4GB 이상의 힙 메모리가 필요, Stop the World 시간이 0.5초 정도 필요한 상황에 사용 (Heap이 너무작을경우 미사용 권장)
+
+
+<img width="500" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/cb2ee09e-6424-4e92-9d13-5e7b121d0962">
+
+
+* [그림15]. Parallel GC
+
+```
+# setting method
+java -XX:+UseG1GC -jar Application.java
+```
+
+<br>
+
+
