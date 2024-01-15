@@ -224,6 +224,11 @@ GC는 사실 종류가 많다. 또 애플리케이션을 띄울 때 내 마음�
 > - 때문에 지금은 잘 쓰지 않는 방식이지만, Device 성능이 제한적이어서 하나의 코어만 사용하는 시스템에는 적용을 고려해볼 수 있을 거 같다.
 > - STW(Stop-The-World) 시간도 다른 GC에 비해 비교적 긴 편이다.
 
+```
+# setting method
+java -XX:+UseSerialGC -jar Application.java
+```
+
 <img src ="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/3ea087f3-6037-4dcb-ba20-99e405d33321" width="400">
 
 * [그림12]. Serialize GC
