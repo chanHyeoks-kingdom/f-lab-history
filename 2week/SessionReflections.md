@@ -312,4 +312,25 @@ java -XX:+UseG1GC -jar Application.java
 
 <br>
 
+---
+> [@Shenandoah GC]
+>
+> - Shenandoah GC는 Red Hat에서 개발해서 java 12에 release된 GC이다.
+> - 기존 CMS가 가진 단편화, G1이 가진 pause의 이슈(?)를 해결
+> - 강력한 Concurrency와 가벼운 GC 로직으로 heap 사이즈에 영향을 받지 않고 일정한 pause 시간이 소요가 특징이다.
+
+<img width="500" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/99dc1b18-0993-4c27-950b-bd31576495e2">
+
+
+* [그림15]. Parallel GC
+
+```
+# setting method
+java -XX:+UseShenandoahGC -jar Application.java
+```
+
+<br>
+
+
+
 
