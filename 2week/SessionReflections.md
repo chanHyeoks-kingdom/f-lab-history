@@ -238,7 +238,7 @@ java -XX:+UseSerialGC -jar Application.java
 >
 > - 자바 8의 디폴트 GC이다.
 > - Serialize GC과 유사한 형태로 동작하지만 YOUNG 영역에 대해서 '멀티 스레드'를 지원한다.
-> - STW(Stop-The-World) 시간은 Serialize GC보다 개선됐다.
+> - STW(Stop-The-World) 시간은 일반적으로 Serialize GC보다 빨라졌다.
 
 
 
