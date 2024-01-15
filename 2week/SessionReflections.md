@@ -240,8 +240,15 @@ java -XX:+UseSerialGC -jar Application.java
 > - Serialize GC과 유사한 형태로 동작하지만 YOUNG 영역에 대해서 '멀티 스레드'를 지원한다.
 > - STW(Stop-The-World) 시간은 일반적으로 Serialize GC보다 빨라졌다.
 
+<img src ="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/07d25272-ed71-4276-aafd-671699bafb76" width="400">
 
+* [그림12]. Parallel GC
 
+```
+# setting method
+java -XX:+UseParallelGC -jar Application.java 
+# -XX:ParallelGCThreads=N : 사용할 쓰레드의 갯수
+```
 
 <br>
 
