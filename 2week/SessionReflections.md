@@ -233,6 +233,7 @@ GC는 사실 종류가 많다. 또 애플리케이션을 띄울 때 내 마음�
 # setting method
 java -XX:+UseSerialGC -jar Application.java
 ```
+
 ---
 > [@Parallel GC]
 >
@@ -241,6 +242,24 @@ java -XX:+UseSerialGC -jar Application.java
 > - STW(Stop-The-World) 시간은 일반적으로 Serialize GC보다 빨라졌다.
 
 <img src ="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/07d25272-ed71-4276-aafd-671699bafb76" width="400">
+
+* [그림12]. Parallel GC
+
+```
+# setting method
+java -XX:+UseParallelGC -jar Application.java  @ -XX:ParallelGCThreads=N : 사용할 쓰레드의 갯수
+```
+
+<br>
+
+---
+> [@Parallel Old GC]
+>
+> - 그냥 Parallel GC의 개선판이다. 
+> - YOUNG 영역에 대해서만 '멀티 스레드'를 지원하던 Parallel GC에 OLD 영역에 대한 '멀티 스레드'지원도 추가헀다고 해서 Parallel 'Old' GC다.
+> - 여기서부터 새로운 GC 방식인 MARK-SUMMARY-COMPACT 방식이 도입된다.
+
+<img src ="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/c38787b7-a68c-41bd-991d-b85ada9a6f8f" width="400">
 
 * [그림12]. Parallel GC
 
