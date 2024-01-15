@@ -247,7 +247,7 @@ java -XX:+UseSerialGC -jar Application.java
 
 ```
 # setting method
-java -XX:+UseParallelGC -jar Application.java  @ -XX:ParallelGCThreads=N : 사용할 쓰레드의 갯수
+java -XX:+UseParallelGC -jar Application.java                  @ -XX:ParallelGCThreads=N : 사용할 쓰레드의 갯수
 ```
 
 <br>
@@ -265,7 +265,7 @@ java -XX:+UseParallelGC -jar Application.java  @ -XX:ParallelGCThreads=N : 사�
 
 ```
 # setting method
-java -XX:+UseParallelGC -jar Application.java  @ -XX:ParallelGCThreads=N : 사용할 쓰레드의 갯수
+java -XX:+UseParallelOldGC -jar Application.java              @ -XX:ParallelGCThreads=N : 사용할 쓰레드의 갯수
 ```
 
 <br>
