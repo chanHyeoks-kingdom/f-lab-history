@@ -303,7 +303,7 @@ java -XX:+UseConcMarkSweepGC -jar Application.java
 <img width="500" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/cb2ee09e-6424-4e92-9d13-5e7b121d0962">
 
 
-* [그림15]. Parallel GC
+* [그림15]. G1 GC (Garbage First)
 
 ```
 # setting method
@@ -322,7 +322,7 @@ java -XX:+UseG1GC -jar Application.java
 <img width="500" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/99dc1b18-0993-4c27-950b-bd31576495e2">
 
 
-* [그림15]. Parallel GC
+* [그림15]. Shenandoah GC
 
 ```
 # setting method
@@ -331,6 +331,23 @@ java -XX:+UseShenandoahGC -jar Application.java
 
 <br>
 
+---
+> [@ZGC (Z Garbage Collector)]
+>
+> - ZGC는 대량의 메모리(8MB ~ 16TB)를 low-latency로 처리하기 위한 목적으로 개발되어 Java 15에 release된 GC이다.
+> - G1이 Region을 이용한 것 처럼 ZGC도 ZPAGE라는 개념을 이용한다. Region과의 차이점은 Region은 정적인데 비해 ZPAGE는 2mb 배수 동적으로 운영된다.
+> - 최대 장점은 힙 크기가 아무리 커져도 STW 시간이 절대 10ms를 넘지 않는다는 것 이다.
 
+<img width="500" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/99dc1b18-0993-4c27-950b-bd31576495e2">
+
+
+* [그림15]. ZGC
+
+```
+# setting method
+java -XX:+UnlockExperimentalVMOptions -XX:+UseZGC -jar Application.java
+```
+
+<br>
 
 
