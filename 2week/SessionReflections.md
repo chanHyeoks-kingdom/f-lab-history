@@ -122,6 +122,7 @@ java 8 버전부터 metaspace라는 이름의 영역으로 분리되어 나왔�
 <img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/b925fcc7-9214-47e8-8565-9814d190239b" width="500">
 <img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/ea8004ce-494f-444c-8794-514a3a523900" width="500">
 
+* [그림7]. Heap 영역에 대해서
 
 
 ```
@@ -159,18 +160,29 @@ GC를 간단히 설명하면 안쓰는 객체를 회수하는 녀석이다.
 8. Heap에 대한 GC와 method에 대한 GC의 차이
 ```
 
-개진상
 <br>
 
 #### Q1. GC의 청소 대상에 대해서
-<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/8c94325a-b092-482a-9bb9-def0e702fc4f" width="500">
 
-* [그림4]. JVM의 PC 영역
+
+- 청소 대상 그림 -
+
+* [그림8]. Heap 영역에 대해서
 
 ```
 GC는 어떤 객체들을 청소할까? 아무거나 쓸어담는다면 GC(Garbage Collector)가 아니라 (Object Destoryer)라고 불리게 됐을 것이다.
 나름대로 청소를 하는 규칙이 있다는데 그 기준이 어떤건지 오늘 다뤄보려고 한다.
 ```
+
+> [@청소 기준]
+>
+> - 연결이 끊긴 객체 (native method stack, stack, method로 부터 더 이상 참조가 없는 경우)
+> - '참조 없는 상태를 파악하는 방법은, RootSpace부터 그래프 순회를 통해 연결된 객체들을 마킹하고 마크가 없는 객체들을 제거한다.
+
+<img src ="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/d38c224f-0b88-406b-be81-016aa5ed58b3" width="400">
+
+* [그림9]. 그래프 탐색과 마킹
+
 
 <br>
 
