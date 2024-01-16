@@ -10,6 +10,10 @@
 6. Java Synchronized Collection과 Concurrent Collection을 비교하시오.
 ```
 
+> [@고민해볼 관점]
+> 
+> Thread Safety를 항상 고려해서 코딩을 해야하는 이유, Deadlock이 발생하는 상황들과 방지법, 동기화 문제 종류 및 발견 방법과 방지하는 법, 실제 코딩 작성시 고려 사항, Static 키워드 사용시 주의점(메모리 누수), Final 키워드 선택 원칙
+
 -----
 
 
