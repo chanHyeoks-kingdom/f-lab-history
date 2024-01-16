@@ -25,10 +25,10 @@
 
 #### 질문 1.Thread Safety와 동기화(synchronization)에 대해 설명 하시오 (키워드: lock, synchronized, deadlock, ThreadLocal, etc)
 ```
-A. 
+A. Thread Safety는 두 개 이상의 작업이 같이 공유하는 자원을 활용할 때에도 데이터 정합성을 보장토록 하는 걸 의미합니다.
 ```
 
-> Thread Safety는 두 개 이상의 쓰레드가 객체나 변수에 대한 동시 접근 혹은 레이스 컨디션을 일으켰을 때에도 항상 데이터의 정합성을 보장하는 상태를 의미한다.
+> Thread Safety는 두 개 이상의 쓰레드가 '객체나 변수에 대한 동시 접근' 혹은 '레이스 컨디션'을 일으켰을 때에도 항상 데이터의 정합성을 보장하는 상태를 의미한다.
 
 
 
