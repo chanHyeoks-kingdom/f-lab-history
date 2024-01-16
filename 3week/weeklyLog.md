@@ -1,5 +1,9 @@
 # WEEK 3
 
+[Tip 1.](https://developer-ellen.tistory.com/205)
+[Tip 2.](https://velog.io/@guswlsapdlf/Java-Thread-Safety-Unsafety)
+
+
 ```
 [이 주의 과제]
 1. Thread Safety와 동기화(synchronization)에 대해 설명 하시오 (키워드: lock, synchronized, deadlock, ThreadLocal, etc)
