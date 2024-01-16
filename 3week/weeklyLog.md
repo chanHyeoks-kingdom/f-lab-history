@@ -23,7 +23,7 @@
 
 ## [경계성 질문]
 
-## 질문 1.Thread Safety와 동기화(synchronization)에 대해 설명 하시오 (키워드: lock, synchronized, deadlock, ThreadLocal, etc)
+#### 질문 1.Thread Safety와 동기화(synchronization)에 대해 설명 하시오 (키워드: lock, synchronized, deadlock, ThreadLocal, etc)
 ```
 A. 
 ```
@@ -41,7 +41,7 @@ A.
 
 <br>
 
-## 질문 2.Static, Final 키워드에 대해 설명 하시오 (키워드: 사용이유, 장단점, etc)
+#### 질문 2.Static, Final 키워드에 대해 설명 하시오 (키워드: 사용이유, 장단점, etc)
 ```
 JVM은 메모리의 효율성과 안정성등의 이점을 위해 내부적으로 가상의 메모리 공간을 분리하는데요 이런 영역은 '공유되는 영역'과 '공유되지 않는 영역'으로 나뉘는데 혹시 어떤 것 부터 설명드리면 좋을까요?
 ```
@@ -56,7 +56,7 @@ JVM은 메모리의 효율성과 안정성등의 이점을 위해 내부적으�
 
 <br>
 
-## 질문 3.Java 예외처리에 대해 설명하세요 (keyword: error, checked/unchecked exception, try/catch/finally, throws/throw)
+#### 질문 3.Java 예외처리에 대해 설명하세요 (keyword: error, checked/unchecked exception, try/catch/finally, throws/throw)
 ```
 JVM은 메모리의 효율성과 안정성등의 이점을 위해 내부적으로 가상의 메모리 공간을 분리하는데요 이런 영역은 '공유되는 영역'과 '공유되지 않는 영역'으로 나뉘는데 혹시 어떤 것 부터 설명드리면 좋을까요?
 ```
@@ -71,7 +71,7 @@ JVM은 메모리의 효율성과 안정성등의 이점을 위해 내부적으�
 
 <br>
 
-## 질문 4.Java Generic에 대해 설명 하시오 (keyword: 타입 파라미터, wildcard, type erasure, 장/단점, etc)
+#### 질문 4.Java Generic에 대해 설명 하시오 (keyword: 타입 파라미터, wildcard, type erasure, 장/단점, etc)
 ```
 JVM은 메모리의 효율성과 안정성등의 이점을 위해 내부적으로 가상의 메모리 공간을 분리하는데요 이런 영역은 '공유되는 영역'과 '공유되지 않는 영역'으로 나뉘는데 혹시 어떤 것 부터 설명드리면 좋을까요?
 ```
@@ -86,7 +86,7 @@ JVM은 메모리의 효율성과 안정성등의 이점을 위해 내부적으�
 
 <br>
 
-## 5. Java Collection에 대해 설명 하시오 (keyword: Set, Map, List, Queue, Stack , etc)
+#### 질문 5. Java Collection에 대해 설명 하시오 (keyword: Set, Map, List, Queue, Stack , etc)
 ```
 JVM은 메모리의 효율성과 안정성등의 이점을 위해 내부적으로 가상의 메모리 공간을 분리하는데요 이런 영역은 '공유되는 영역'과 '공유되지 않는 영역'으로 나뉘는데 혹시 어떤 것 부터 설명드리면 좋을까요?
 ```
@@ -101,7 +101,7 @@ JVM은 메모리의 효율성과 안정성등의 이점을 위해 내부적으�
 
 <br>
 
-## 6. Java Synchronized Collection과 Concurrent Collection을 비교하시오.
+#### 질문 6. Java Synchronized Collection과 Concurrent Collection을 비교하시오.
 ```
 JVM은 메모리의 효율성과 안정성등의 이점을 위해 내부적으로 가상의 메모리 공간을 분리하는데요 이런 영역은 '공유되는 영역'과 '공유되지 않는 영역'으로 나뉘는데 혹시 어떤 것 부터 설명드리면 좋을까요?
 ```
