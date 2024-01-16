@@ -21,7 +21,7 @@
 -----
 
 
-## [경계성 질문]
+## [자문자답]
 
 #### 질문 1.Thread Safety와 동기화(synchronization)에 대해 설명 하시오 (키워드: lock, synchronized, deadlock, ThreadLocal, etc)
 ```
