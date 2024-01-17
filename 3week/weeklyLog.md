@@ -4,7 +4,7 @@
 [Guide Thread 2.](https://velog.io/@junttang/SP-5.4-Thread-Safe-Functions)
 [Tip 1.](https://developer-ellen.tistory.com/205)
 [Tip 2.](https://velog.io/@guswlsapdlf/Java-Thread-Safety-Unsafety)
-
+['final static' vs 'static final'](https://www.baeldung.com/java-static-final-order)
 
 ```
 [이 주의 과제]
