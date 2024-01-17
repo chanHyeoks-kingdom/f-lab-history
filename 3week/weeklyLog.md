@@ -1,6 +1,7 @@
 # WEEK 3
 
-[Guide Thread](https://www.baeldung.com/java-thread-safety)
+[Guide Thread 1.](https://www.baeldung.com/java-thread-safety)
+[Guide Thread 2.](https://velog.io/@junttang/SP-5.4-Thread-Safe-Functions)
 [Tip 1.](https://developer-ellen.tistory.com/205)
 [Tip 2.](https://velog.io/@guswlsapdlf/Java-Thread-Safety-Unsafety)
 
