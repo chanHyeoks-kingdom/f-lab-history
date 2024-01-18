@@ -92,6 +92,10 @@ static 키워드는 프로그램의 시작부터 끝까지 메모리에서 지�
 에러가 날 만한 부분을 try 블록으로 묶은 뒤 catch, 그러니까 에러가 실제로 발생했을 때 처리하는 구문을 작성해주는 방식으로 에러를 핸들링할 수 있게 됩니다.
 ```
 
+<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/4291f044-4255-4edc-bb1e-b7dbaf494643" width=500>
+
+
+
 
 ##### 질문 1-1. 꼬리질문
 ```
