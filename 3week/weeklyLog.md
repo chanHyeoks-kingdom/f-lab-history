@@ -84,7 +84,18 @@ static 키워드는 프로그램의 시작부터 끝까지 메모리에서 지�
 
 #### 질문 3.Java 예외처리에 대해 설명하세요 (keyword: error, checked/unchecked exception, try/catch/finally, throws/throw)
 ```
-프로그램이 운영되다 보면 예상치 못한 문제들이 발생할 수 있는데 그런 문제들을 잘 다루기 위한 프로그래밍 기법입니다.
+프로그램이 운영되다 보면 예상치 못한 문제들이 발생할 수 있는데여. 그런 문제들을 잘 관리 하기 위해 지원되는 프로그래밍 기법을 예외처리라고 합니다.
+그 중에서 예외를 탐지하고 처리하기 위한 try, catch, finally 같은 제어 문법이나 throws, thorw 같은 예외를 전파하는 문법들을 이용해서 컨트롤 할 수 있는 것들은
+exception 클래스로 분류 하구요. 이 exception은 컴파일 단계에서 체크되는 checked exception과 실행 환경에서 확인되는 unchecked exception이 있습니다.
+
+
+여기서 더 설명 하려면 예외 처리를 위한 try, catch, finally 같은 문법적인 부분이나 checked excpetion, unchecked exception 등에 대해 설명드릴 수 있을 거 같은데
+어떤 부분에 대해서 더 설명 드리는게 더 좋으실지 ..
+
+아니면 제가 설명한 것 중에 궁금하신 부분이 있으실까요?
+```
+
+<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/4291f044-4255-4edc-bb1e-b7dbaf494643" width=500>
 
 
 
@@ -94,16 +105,27 @@ static 키워드는 프로그램의 시작부터 끝까지 메모리에서 지�
 
 이렇게 JVM 수준에서 진행되는 예외 처리 말고도 사용자가 직접 예외를 처리할 수 있는데 처음 던져진 에러들을 중간에서 catch로 잡아내는 것이 그 방법입니다.
 에러가 날 만한 부분을 try 블록으로 묶은 뒤 catch, 그러니까 에러가 실제로 발생했을 때 처리하는 구문을 작성해주는 방식으로 에러를 핸들링할 수 있게 됩니다.
+
+
+##### 질문 1-1. try, catch, finally는 어떤 역할을 하나요?
+```
+try는 예외가 발생할 만한 부분을 정의해주는 역할을 하고 catch는 try로 묶인 영역에서 어떤 예외가 발생할건지에 대해 정의하고, 예외 발생시에 어떤 처리를 할건지를 정의하는 부분입니다.
+finally는 예외발생 여부와 상관 없이 무조건 처리해야 하는 로직을 정의하는 역할입니다.
 ```
 
-<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/4291f044-4255-4edc-bb1e-b7dbaf494643" width=500>
-
-
-
-
-##### 질문 1-1. 꼬리질문
+##### 질문 1-2. checkedException과 uncheckedException은 어떤 차이가 있나요?
 ```
-..
+checked Exception과 uncheckedException은 '컴파일 시점'에 예외처리를 강제하냐 아니냐의 차이가 있습니다. checked Exception 같은 경우는 컴파일 전에 JVM에 의해
+'예외 처리'를 강제받게 됩니다. 예를들면 파일 입출력 로직을 처리할 때, IOException이 발생할 수 있기에 try-catch 구문을 통해 해당 예외를 핸들링 하던지 해당
+메서드에 throws를 통해 메서드에서 해당 에러를 던질 것을 명시해야 합니다.
+
+반면 unchecked exception은 처리가 강제되지 않고, 만약 실제 처리가 없더라도 발생시에 호출 스택을 따라 최상위 메서드까지 올라가서 jvm에 의해 처리됩니다.
+```
+
+##### 질문 1-3. 에러는 뭐에요 그럼?
+```
+java는 try-catch 같은 프로그래밍 기법을 적용해 핸들링하기엔 어려움이 있는, 치명적인 예외상황들을 Error 이라는 클래스로 분류해 다루고 있습니다.
+굳이 이렇게 하는 이유는 치명적인 Error가 발생했을 때 좀 더 안전하게 쓰레드를 종료한다던지, 로깅을 통해 기록을 남기는데 활용하기 위해서 적용된 개념입니다.
 ```
 
 ...
