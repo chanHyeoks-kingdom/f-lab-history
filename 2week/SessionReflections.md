@@ -14,12 +14,7 @@
 (1) JVM 메모리 구조에 대한 설명
 (2) 자바 Garbage Collector에 대해서
 ```
-~~(3) Thread Safety와 동기화에 대해서~~
-~~(4) Static, Final에 대해서~~
-
 <br>
-
-
 
 > [@고민해볼 관점]
 > 
