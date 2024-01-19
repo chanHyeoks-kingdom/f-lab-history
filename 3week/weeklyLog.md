@@ -12,8 +12,6 @@
 2. Static, Final 키워드에 대해 설명 하시오 (키워드: 사용이유, 장단점, etc)
 3. Java 예외처리에 대해 설명하세요 (keyword: error, checked/unchecked exception, try/catch/finally, throws/throw)
 4. Java Generic에 대해 설명 하시오 (keyword: 타입 파라미터, wildcard, type erasure, 장/단점, etc)
-5. Java Collection에 대해 설명 하시오 (keyword: Set, Map, List, Queue, Stack , etc)
-6. Java Synchronized Collection과 Concurrent Collection을 비교하시오.
 ```
 
 > [@고민해볼 관점]
