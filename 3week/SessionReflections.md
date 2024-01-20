@@ -1,9 +1,12 @@
-# 2주차 회고
+# 3주차 회고
 
-[2주차 멘토링 질문에 대한 내 답변.pdf](-)
+[3주차 멘토링 질문에 대한 내 답변.pdf](-)
 ```
 이번주는 4가지 질문에 대한 답을 찾는 과정이었다.
-(1) JVM 메모리 구조에 대한 설명 (2) 자바 Garbage Collector에 대해서 (3) Thread Safety와 동기화에 대해서 (4) Static, Final에 대해서
+1. Thread Safety와 동기화(synchronization)에 대해 설명 하시오 (키워드: lock, synchronized, deadlock, ThreadLocal, etc)
+2. Static, Final 키워드에 대해 설명 하시오 (키워드: 사용이유, 장단점, etc)
+3. Java 예외처리에 대해 설명하세요 (keyword: error, checked/unchecked exception, try/catch/finally, throws/throw)
+4. Java Generic에 대해 설명 하시오 (keyword: 타입 파라미터, wildcard, type erasure, 장/단점, etc)
 
 멘토링을 통해 얻은 인사이트를 아래와 같은 목차로 정리해보려한다.
 (내 생각을 통해 2차적으로 가공된 결론이어서 멘토링 내용과 연관성이 없을 수 있습니다.)
