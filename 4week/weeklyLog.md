@@ -38,7 +38,7 @@ ArrayList는 동적 배열이고, LinkedList는
 
 
 
-#### 질문 2. [질문 제목2]
+#### 질문 2. Java Synchronized Collection과 Concurrent collection은 무슨 차이에요?
 ```
 JVM은 메모리를 용도에 맞게 분리해 다양핱 성능상의 이점과 보안상의 이점을 가져가는데 대표적인 가상 메모리 영역의 예시는 "Method", "Heap", "Stack" 영역이 있습니다.
 
