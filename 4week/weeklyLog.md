@@ -17,11 +17,19 @@
 
 #### 질문 1. Java Collections이 뭔가요?
 ```
-Java에선 Collections 라는 프레임워크를 통해 여러가지 자료구조를 손쉽게 사용할 수 있는데요, 거기서 지원하는 인터페이스입니다. List나 Set, Queue 인터페이스로 확장됩니다.
+Java에선 java.util 안에 Collections 라는 프레임워크를 통해 여러가지 자료구조를 손쉽게 사용할 수 있는데요, 거기서 지원하는 인터페이스입니다. List나 Set, Queue 인터페이스로 확장됩니다.
 이 내용에 대해 좀 더 구체적으로 설명하면 좋을까요? 아니면 다른 궁금한 부분이 있으실까요?
 
-(X) 자바에선 여러 자료구조를 손쉽게 사용하기 위해 Collections 라는 java.util 안에 포함된 프레임워크를 사용할 수 있는데요! 여기서 지원하는 자료구조 중에서 'Value'만을 이용해 데이터를 관리하는 자료구조의 컨셉이 Collection라는
-인터페이스 입니다. 그래서 이 안엔은 List, Set, Queue같은 자료구조 인터페이스들이 담겨 있습니다. 이 내용에 대해 좀 더 구체적으로 설명하면 좋을까요? 아니면 다른 궁금한 부분이 있으실까요?
+```
+
+
+##### 질문 1-2. 리스트부터 설명 해주실래요? 왜 쓰는거에요?
+```
+네! 리스트는 동적 배열 기반의 ArrayList와 이와 유사한 역할을 하지만 thread-safety하게 구현된 Vector, 그리고 이 Vector을 상속받아서 LIFO를 제공토록 구현된 STACK 같은 자료구조들이 있습니다.
+그래서 ArrayList는 내가 접근하려는 인덱스 정보를 알고 있는 상황일 때 사용하면 좋고, Thread Safety가 필요하다면 Vector를 고려해볼 수 있습니다. 우리가 사용하는 STACK
+
+ArrayList는 인덱스를 사용할 수 있는 환경에서 여러 위치의 요소에 대한 빠른 조회등을 할 때 주로 사용하면 좋고 Vector는 이 ArrayList에 threadSafety이 필요할 때 사용하면 되는데 사실 성능 이슈가 있어서요!
+자주 쓰는 곳에만 사용하고 되도록이면 쓰기작업과 읽기작업의 빈도를 보고 concurrent collection의 CopyOnWriteArrayList나 Collections의 synchronizedList를 이용해 처리해주는게 일반적으론 더 좋습니다.
 ```
 
 
@@ -32,12 +40,7 @@ Java에선 Collections 라는 프레임워크를 통해 여러가지 자료구�
 있다 정도의 차이가 있는 거 같습니다.
 ```
 
-##### 질문 1-2. 리스트부터 설명 해주실래요? 왜 쓰는거에요?
-```
-네! 리스트는 동적 배열 기반의 ArrayList와 이걸 thread-safety하게 구현한 Vector, 그리고 이 Vector을 상속받아서 LIFO를 제공토록 구현된 STACK 등이 있습니다.
-ArrayList는 인덱스를 사용할 수 있는 환경에서 여러 위치의 요소에 대한 빠른 조회등을 할 때 주로 사용하면 좋고 Vector는 이 ArrayList에 threadSafety이 필요할 때 사용하면 되는데 사실 성능 이슈가 있어서요!
-자주 쓰는 곳에만 사용하고 되도록이면 쓰기작업과 읽기작업의 빈도를 보고 concurrent collection의 CopyOnWriteArrayList나 Collections의 synchronizedList를 이용해 처리해주는게 일반적으론 더 좋습니다.
-```
+
 
 ##### 질문 1-3. CopyOnWriteArrayList랑 synchronizedList가 뭐죠?
 ```
@@ -61,6 +64,18 @@ ArrayList는 인덱스를 사용할 수 있는 환경에서 여러 위치의 요
 
 #### 질문 2. Java Synchronized Collection과 Concurrent collection은 무슨 차이에요?
 ```
+synchronized collection은 하나의 스레드만 접근할 수 있고 Concurrent collection을 이용하면 여러 스레드가 동시에 접근해도 괜찮습니다.
+
+Java Synchronized Collection은 여러 컬렉션에 threadsafety 를 보장토록 하기 위해 사용되는 유틸리티성 클래스입니다. 예를 들어서 그냥 ArrayList가 있으면
+synchronizedList()라는 메서드에 인자로 넘겨주면, 인자로 넘겨줬던 원본 리스트를 참조하는 객체를 내려주고 원본 리스트에 mutext라고 락을 걸어서 개별 요소 접근에 대한
+thread safety를 지킬 수 있도록 해줍니다. 근데 이게 for-each 같이 이터레이터에 의해 순회될 때 동시수정에 의한 ConcurrentModificationException이 있어서 이런 부분을
+보장하는 Concurrent collection을 사용해볼 수 있습니다.
+
+
+
+
+
+(X)
 Java Synchronized Collection은 Collection 각 컬렉션을 threadsafety 하게 래핑해주는 기능들을 모아둔 유틸리티성 클래스입니다!
 아까 예시로 들었던 것 처럼 synchronizedList같은 메서드로 래핑해서 동기화된 List를 리턴받을 수 있습니다!
 CopyOnWriteArrayList 같은 경우는 concurrent에 속하는 패키진데 쓰기 작업시 복사본을 만들어 thread-safety를 보장합니다.
@@ -68,6 +83,9 @@ CopyOnWriteArrayList 같은 경우는 concurrent에 속하는 패키진데 쓰�
 # List<String> synchronizedList = Collections.synchronizedList(new ArrayList<String>());
 # CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
 
+
+
+그니까 원본 리스트(c)를 참조하는 래퍼 객체를 반환해서 그걸 통해 스레드 안전성을 보장하는 작업을 수행토록 해준다는거지? mutext(잠금객체)는 해당 원본 리스트(c)에 걸고?
 
 ```
 
