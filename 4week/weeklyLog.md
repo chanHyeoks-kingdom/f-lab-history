@@ -58,7 +58,13 @@ ArrayList는 인덱스를 사용할 수 있는 환경에서 여러 위치의 요
 
 #### 질문 2. Java Synchronized Collection과 Concurrent collection은 무슨 차이에요?
 ```
-JVM은 메모리를 용도에 맞게 분리해 다양핱 성능상의 이점과 보안상의 이점을 가져가는데 대표적인 가상 메모리 영역의 예시는 "Method", "Heap", "Stack" 영역이 있습니다.
+Java Synchronized Collection은 Collection 각 컬렉션을 threadsafety 하게 래핑해주는 기능들을 모아둔 유틸리티성 클래스입니다!
+아까 예시로 들었던 것 처럼 synchronizedList같은 메서드로 래핑해서 동기화된 List를 리턴받을 수 있습니다!
+CopyOnWriteArrayList 같은 경우는 concurrent에 속하는 패키진데 쓰기 작업시 복사본을 만들어 thread-safety를 보장합니다.
+
+# List<String> synchronizedList = Collections.synchronizedList(new ArrayList<String>());
+# CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+
 
 ```
 
