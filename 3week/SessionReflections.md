@@ -23,13 +23,16 @@
 
 <br>
 
-## 1. JVM 메모리 구조에 대한 설명
+## 1. 자바에서 Thread Safety와 동기화를 어떻게 준수할까요?
 
 
 ```
-JVM은 프로세스지만 효율적인 메모리 관리를 위해 내부적으로 가상 메모리를 관리한다. 내부적으로 [method, heap, stack, pc, native method stack]
-으로 아래 그림처럼 다섯가지 영역으로 나뉜다. 
+먼저 `thread safety`라는 건 여러 스레드를 이용해 병렬 작업을 수행할 때 작업의 결과로 데이터 정합성이 헤쳐지지 않는 상태를 유지하는 것을 말합니다. 여러 스레드를 동시에 사용할 때
+우리는 '레이스 컨디션'같은 상황등을 통해 데이터 정합성을 보장하지 못할 수 있는데 대표적으로 lock을 이용해 공유 자원에 대한 동시접근을 컨트롤해 이 문제를 해결할 수 있습니다.
+
+특히 자바에서는 이런 동기화를 위해 synchronized라는 키워드를 제공합니다.
 ```
+[[관련 내용]](https://blog.naver.com/cksgurwkd12/223336505526)
 
 <img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/16c12151-84fc-496b-87ce-b6c491b26866" width="500">
 
