@@ -82,11 +82,15 @@
 자바 exception은 '예상치 못한 상황'을 안전하게 관리하기 위해 자바에서 제공하는 기능이다. 자바에선 이런 예상치 못한 상황을 크게 '에러'와 '예외'로 나누는데 에러의 경우 핸들링을 하기가 어려울 정도로
 큰 문제들에 대해 단순히 '기록'하는 정도를 목적으로 제공한다. 예컨대 OOME(OutOfMemoryException)이나 StackOverflow등이 여기에 속한다. 반면 예외는 우리가 핸들링할법한 것들을 다루는데 이것도
 크게 2가지로 나뉜다. 바로 runtime 환경에서 일어나는 uncheckedException과 컴파일 시점에서 미리 확인할 수 있는 checkedException이다.
-
-uncheckedException은 그 유명한 nullPointException이나 ArrayIndexOutOfBounds가 있다. 이런 익셉션은 어차피 컴파일 수준에서 체크하지 않기 때문에 try, catch로 처리하지 않더라도 최상위
-메서드로 올라가 처리된다. 반면 checkedException은 무조건 try, catch나 throws를 통해 해당 메서드에서 핸들링 할건지 상위 메서드에 핸들링 책임을 넘길건지 지정할 수 있다. 사실 이렇게 보면 runtime
-Exception, 그러니까 uncheckedException에 대해선 핸들링 하지 못하는 것 처럼 보일 수 있는데 해당 익셉션이 발생할만한 지점에 throw를 키워드를 사용해 직접 에러를 던질 수 있다.
 ```
+
+> uncheckedException은 그 유명한 nullPointException이나 ArrayIndexOutOfBounds가 있다. 이런 익셉션은 어차피 컴파일 수준에서 체크하지 않기 때문에 try, catch로 처리하지 않더라도 최상위
+>
+> 메서드로 올라가 처리된다. 반면 checkedException은 무조건 try, catch나 throws를 통해 해당 메서드에서 핸들링 할건지 상위 메서드에 핸들링 책임을 넘길건지 지정할 수 있다. 사실 이렇게 보면 runtime
+>
+> Exception, 그러니까 uncheckedException에 대해선 핸들링 하지 못하는 것 처럼 보일 수 있는데 해당 익셉션이 발생할만한 지점에 throw를 키워드를 사용해 직접 에러를 던질 수 있다. 이 과정에서 좀 더
+>
+> 우리의 용도를 좀 더 명확히 표현하기 위해 기존 exception을 상속받아 customException을 만들어 처리할 수도 있는데 이러한 내용은 클라이언트의 요구사항이나 팀의 컨벤션등을 고려해 이루어지는게 좋다.
 
 <br>
 
