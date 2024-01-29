@@ -16,15 +16,11 @@
 
 <br>
 
-## 1. Java Collection에 대해 설명 하시오
-
+## 1. Java Collection에 대해 설명 하시오 (키워드: Set, Map, List, Queue, Stack, etc)
 
 ```
--
+Collection 은 ..
 ```
 
-<img src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/16c12151-84fc-496b-87ce-b6c491b26866" width="500">
-
-* [그림1]. JVM 가상 메모리 구조의 PC 영역
 
 <br>
