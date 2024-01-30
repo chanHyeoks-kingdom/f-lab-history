@@ -19,7 +19,8 @@
 ## 1. Java Collection에 대해 설명 하시오 (키워드: Set, Map, List, Queue, Stack, etc)
 
 ```
-Collection 은 ..
+Java Collection은 자료구조들을 편하게 쓰기 위해 자바에서 지원하는 Collections 프레임워크의 축이 되는 인터페이스 중 하나이다. 이 것 외에는 key와 value 형태를 다루는 map이 있는데 colletion 같은 경우는
+value만 다루는 자료구조들이 모여있다. Collection 아래에도 List, Queue, Set 같은 여러 인터페이스들이 있다.
 ```
 
 
