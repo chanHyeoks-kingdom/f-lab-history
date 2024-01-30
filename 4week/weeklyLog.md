@@ -68,19 +68,6 @@ thread safety를 지킬 수 있도록 해줍니다. 근데 이게 for-each 같�
 보장하는 Concurrent collection을 사용해볼 수 있습니다.
 
 
-
-
-
-(X)
-Java Synchronized Collection은 Collection 각 컬렉션을 threadsafety 하게 래핑해주는 기능들을 모아둔 유틸리티성 클래스입니다!
-아까 예시로 들었던 것 처럼 synchronizedList같은 메서드로 래핑해서 동기화된 List를 리턴받을 수 있습니다!
-CopyOnWriteArrayList 같은 경우는 concurrent에 속하는 패키진데 쓰기 작업시 복사본을 만들어 thread-safety를 보장합니다.
-
-# List<String> synchronizedList = Collections.synchronizedList(new ArrayList<String>());
-# CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
-
-
-
-그니까 원본 리스트(c)를 참조하는 래퍼 객체를 반환해서 그걸 통해 스레드 안전성을 보장하는 작업을 수행토록 해준다는거지? mutext(잠금객체)는 해당 원본 리스트(c)에 걸고?
++ 그니까 원본 리스트(c)를 참조하는 래퍼 객체를 반환해서 그걸 통해 스레드 안전성을 보장하는 작업을 수행토록 해준다는거지? mutext(잠금객체)는 해당 원본 리스트(c)에 걸고?: 그냥 혼자 시부렁
 
 ```
