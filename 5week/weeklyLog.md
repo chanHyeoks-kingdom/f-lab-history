@@ -21,9 +21,20 @@
 -
 ```
 
-##### 질문 1-1. 그래서 이건 뭔데요?
-```
+##### 질문 1-1. jsp의 서블렛 변환 과정 주체 (톰캣인가 내부 로직인가 ..)
 
+
+jsp로 넘겨줄 모델 값을 세팅하고 디스패처 같은 클래에게 넘겨주면 servlet로 자동 변환
+```
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    // 데이터를 request에 추가
+    request.setAttribute("key", "value");
+
+    // RequestDispatcher를 사용하여 JSP 페이지로 요청 전달
+    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/example.jsp");
+    dispatcher.forward(request, response);
+}
 ```
 
 <br>
