@@ -16,7 +16,7 @@
 
 ## [자문자답]
 
-#### 1. Java Synchronized Collection과 Concurrent Collection을 비교하시오
+### 1. Java Synchronized Collection과 Concurrent Collection을 비교하시오
 ```
 -
 ```
@@ -31,7 +31,7 @@
 
 
 
-#### 2. HashMap 동작원리와 내부구조에 대해 설명하시오 (키워드: equals/hashCode와의 상관관계 및 성능)
+### 2. HashMap 동작원리와 내부구조에 대해 설명하시오 (키워드: equals/hashCode와의 상관관계 및 성능)
 [참고1.](https://www.baeldung.com/java-equals-hashcode-contracts) , 
 
 
@@ -61,14 +61,14 @@
 
 <br>
 
-#### 3. JSP의 처리 과정에 대해 설명하시오 (키워드: 구성요소, servlet, request/response)
+### 3. JSP의 처리 과정에 대해 설명하시오 (키워드: 구성요소, servlet, request/response)
 
 
 > JSP의 처리 과정은 서버로 어떤 페이지를 달라는 `요청이 들어오면` web.xml 라던지, 스프링의 경우 컨트롤러 애노테이션이 붙은 메서드의 응답으로 해당 `jsp의 실제경로(물리 경로)를 지정`해 내려주면 뷰리졸버 같은 것들이
 > 해당 jsp를 호출하고 `해당 내용이 톰캣에 의해 서블릿으로 변환`되고 이 `서블릿 내용이 톰캣에 의해 html로 파싱`되서 `응답으로 내려갑니다`.
 
 
-이 전체 과정은 마치 요리를 하는 것과 비슷하다. 
+###### 이 전체 과정은 마치 요리를 하는 것과 비슷하다. 
 ```
 (1) 요리 주문이 들어오면(웹 페이지 요청),
 (2) 요리사(서버)는 레시피(웹.xml 또는 스프링 컨트롤러)를 확인한다. 
@@ -110,7 +110,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
 <br>
 
 
-#### 4. MVC패턴에 대해 설명하시오 (키워드: 모델, 컨트롤러, 뷰, MVC1 vs MVC2 vs SpringMVC 비교)
+### 4. MVC패턴에 대해 설명하시오 (키워드: 모델, 컨트롤러, 뷰, MVC1 vs MVC2 vs SpringMVC 비교)
 
 ```
 ```
@@ -124,7 +124,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
 
 
 
-#### 5. 쿠키와 세션에 대해 설명하시오 (키워드: 사용 이유, 장단점, 차이점)
+### 5. 쿠키와 세션에 대해 설명하시오 (키워드: 사용 이유, 장단점, 차이점)
 
 ```
 
@@ -138,7 +138,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
 <br>
 
 
-#### 6. http methods(POST, GET, PUT, PATCH, DELETE, etc)와 http status code(1xx, 2xx, 3xx, 4xx, 5xx)대해 설명하시오
+### 6. http methods(POST, GET, PUT, PATCH, DELETE, etc)와 http status code(1xx, 2xx, 3xx, 4xx, 5xx)대해 설명하시오
 ```
 
 ```
