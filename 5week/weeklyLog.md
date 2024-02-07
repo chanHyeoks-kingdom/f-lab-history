@@ -78,35 +78,56 @@
 ```
 
 
-##### 질문 2-1. jsp요? 근데 굳이 왜 jsp를 쓸까요? 서블릿을 그냥 쓰면 안되나요?
+##### Q1. jsp요? 근데 굳이 왜 jsp를 쓸까요? 서블릿을 그냥 쓰면 안되나요?
+```
+한마디로 서블릿은 자바 코드여서 html을 다루는데 적합하지 않아서, html 형식 베이스에 자바 코드를 삽입하는 방식인 jsp를 사용합니다. 그리고 이렇게 표현계층과 비즈니스 로직을 분리하면 개발도 편해집니다.
+```
 > 사실 `여기서 말하는 서블릿`은 Servlet 이라는 클래스를 상속받는 `HTTP 요청에 대한 처리를 하기 위한 클래스`를 말하는건데요. 이게 `사실 그냥 자바 코드`여서요! html 작성을 하려고 해도 저희가 System.out.print()같은 거 하듯이 writer객체에 일일이 
 > 써줘야하는데 이게 `html을 다루는 방법으로는 직관적이지 못한 편`이어서, 그렇다고 자바 레벨에서 뭔가 더 개선하는것도 사실 자바 코드위에서 일어나는 일이어서 한계가 있어서요. 아예 html을 베이스로 하되 거기에 동적으로 필요한 값들에 대해서 java 코드를
 > 삽입할 수 있도록 해서 html개발을 보다 직관적으로 하기 위해 jsp를 씁니다.
 >
 > `개발자는 복잡한 서블릿 코드를 직접 관리하는 대신, JSP를 통해 비즈니스 로직과 프레젠테이션 레이어를 쉽게 분리할 수 있게 됐습니다.`
 
+<br>
 
 
+
+##### Q2. JSP와 Servlet의 차이를 좀 봅시다.
+
+> ##### example(1) servlet
 ```
-한마디로 서블릿은 자바 코드여서 html을 다루는데 적합하지 않아서, html 형식 베이스에 자바 코드를 삽입하는 방식인 jsp를 사용합니다.
-```
-
-
-##### 질문 2-1. jsp의 서블렛 변환 과정 주체 (톰캣인가 내부 로직인가 ..)
-
-jsp로 넘겨줄 모델 값을 세팅하고 디스패처 같은 클래스에게 넘겨주면 servlet로 자동 변환
-```
-protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-    // 데이터를 request에 추가
-    request.setAttribute("key", "value");
-
-    // RequestDispatcher를 사용하여 JSP 페이지로 요청 전달
-    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/example.jsp");
-    dispatcher.forward(request, response);
+...
+public class GreetingServlet extends HttpServlet {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        String name = request.getParameter("name");
+        if (name == null) name = "World";
+        out.println("<html>");
+        out.println("<head><title>Greeting</title></head>");
+        out.println("<body>");
+        out.println("<h1>Hello, " + name + "!</h1>");
+        out.println("</body>");
+        out.println("</html>");
+    }
 }
 ```
 
+> ##### example(2) jsp
+```
+...
+<html>
+<head><title>Greeting</title></head>
+<body>
+    <% String name = request.getParameter("name");
+       if (name == null) name = "World";
+    %>
+    <h1>Hello, <%= name %>!</h1>
+</body>
+</html>
+```
+
+<br>
 <br>
 
 
