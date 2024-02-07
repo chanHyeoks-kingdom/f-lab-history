@@ -21,10 +21,10 @@
 -
 ```
 
-##### 질문 1-1. jsp의 서블렛 변환 과정 주체 (톰캣인가 내부 로직인가 ..)
+##### 질문 1-1. -
 
 
-jsp로 넘겨줄 모델 값을 세팅하고 디스패처 같은 클래에게 넘겨주면 servlet로 자동 변환
+jsp로 넘겨줄 모델 값을 세팅하고 디스패처 같은 클래스에게 넘겨주면 servlet로 자동 변환
 ```
 protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
@@ -81,9 +81,19 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
 이 방식 덕분에 웹 개발 과정이 더욱 효율적이고 직관적으로 변했어. 개발자는 복잡한 서블릿 코드를 직접 관리하는 대신, JSP를 통해 비즈니스 로직과 프레젠테이션 레이어를 쉽게 분리할 수 있게 됐지.
 ```
 
-##### 질문 2-1. 그래서 저건 뭔데요?
-```
+##### 질문 2-1. jsp의 서블렛 변환 과정 주체 (톰캣인가 내부 로직인가 ..)
 
+jsp로 넘겨줄 모델 값을 세팅하고 디스패처 같은 클래스에게 넘겨주면 servlet로 자동 변환
+```
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    // 데이터를 request에 추가
+    request.setAttribute("key", "value");
+
+    // RequestDispatcher를 사용하여 JSP 페이지로 요청 전달
+    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/example.jsp");
+    dispatcher.forward(request, response);
+}
 ```
 
 <br>
