@@ -133,8 +133,9 @@ public class GreetingServlet extends HttpServlet {
 
 
 ### 4. MVC패턴에 대해 설명하시오 (키워드: 모델, 컨트롤러, 뷰, MVC1 vs MVC2 vs SpringMVC 비교)
-
+> #####  
 ```
+
 ```
 
 ##### 질문 4-1. 그래서 저건 뭔데요?
