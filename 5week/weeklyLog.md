@@ -17,12 +17,13 @@
 ## [자문자답]
 
 ### 1. Java Synchronized Collection과 Concurrent Collection을 비교하시오
-```
-둘 다 thread safety를 지원하기 위해 컬렉션 클래스인데 데이터를 보호하는 범위에 차이가 있습니다. synchronized Collection은 전체 컬렉션을 잠구고
-Concurrent Collection은 특정 부분에만 락 프리를 적용하는 방식으로 thread safety를 보장합니다. 그래서 synchronized Collcetion보다 Concurreent Collection이
-대체로 성능이 더 좋은 편입니다.
+
+> 둘 다 thread safety를 지원하기 위해 컬렉션 클래스인데 `데이터를 보호하는 범위와 방식`에 차이가 있습니다. synchronized Collection은 전체 컬렉션을 잠구고
+> Concurrent Collection은 특정 부분에만 락 프리를 적용하는 방식으로 thread safety를 보장합니다. 그래서 synchronized Collcetion보다 Concurreent Collection이
+> 대체로 성능이 더 좋은 편입니다.
 (Q1. 근데 무조건 더 좋나? 실제로 어떤 상황에서 더 좋은지 비교 해보기),
 (Q2. 세그먼트에 대한 명확한 정의 및 실체 찾아보기)
+(Q3. CAS: 기대하는 연산 결과와 같거나 하드웨어 레벨에서 스레드 침범이 일어나지 않음을 확인받은 상태에서만 변수의 값을 업데이트, 라는 설명 맞는지 다시 검토)
 ```
 
 ##### 질문 1-1. 
