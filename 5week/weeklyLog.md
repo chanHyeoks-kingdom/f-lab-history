@@ -169,9 +169,101 @@ public class GreetingServlet extends HttpServlet {
 
 
 ### 4. MVC패턴에 대해 설명하시오 (키워드: 모델, 컨트롤러, 뷰, MVC1 vs MVC2 vs SpringMVC 비교)
-> #####  
+> #####  JSP 파일만 쓸 경우 하나에 비즈니스 로직, 랜더링할 html 코드, 심지어 레포지토리에 대한 내용까지 전부 들어가버리게 되어 코드가 복잡해집니다. `그래서 MVC가 필요해집니다`
+
+```
+[History]
+(1-A) 정적인 웹을 동적으로 바꿔주기 위해 Servlet을 썼다.
+(1-B) 근데 Servlet처럼 자바 코드로 html 쓰기가 말도 안되게 힘드네?
+
+(2-A) JSP라는 템플릿 엔진의 등장. 이제 html 동적으로 랜더링하기 좀 편해짐
+(2-B) 근데 JSP파일 하나에 뷰, 비즈니스 로직, 레포지토리까지 다 우겨 넣으니까 유지보수의 문제 발생
+
+Answer. 그래서 나온게 바로 ... MVC 패턴 !
 ```
 
+![image](https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/435a1638-049f-48e7-ac72-f59d2dcc1067)
+##### [그림]. MVC 패턴의 2가지 구조
+
+```
+[구조1]
+1. 컨트롤러에 비즈니스 로직까지 담아서
+2. 모델에 데이터 전달하고
+3. 뷰에서 참조한 뒤에
+4. 이를 Response 해주는 것과
+
+[구조2]
+1. 컨트롤러와 서비스(비즈니스)로직을 분리한 후에
+2. 모델에 데이터 전달하고
+3. 뷰에서 참조해서
+4. 이를 Response 해주는 것
+```
+##### > 일단 Servlet과 JSP를 이용해 위 MVC2 구조를 따라해보면 아래와 같다.
+```
+// Servlet part
+@WebServlet(name = "MvcMemberListServlet", urlPatterns = "/servlet-mvc/members")
+
+public class MvcMemberListServlet extends HttpServlet {
+    MemberRepository memberRepository = MemberRepository.getInstance();
+
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Member> memberList = memberRepository.findAll();
+        req.setAttribute("members", memberList);
+
+        String viewPath = "/WEB-INF/views/members.jsp";
+        RequestDispatcher dispatcher = req.getRequestDispatcher(viewPath);
+        dispatcher.forward(req, resp);
+    }
+}
+```
+> 위 코드를 보면 알겠지만 서블릿 관련 내용 등록해주는 부분이나 distpatcher에 req나 resp를 forward해주는 부분이 계속 중복됩니다.
+> 이런 불편함을 해소하기 위해서 "Front controller" 패턴 이라는 걸 적용해서 Front Controller를 제외한 나머지 컨트롤러들은 servlet을 사용치 않아도 되게 구현했다.
+
+![image](https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/fde071af-d40e-41e6-b43f-ce09d48be52f)
+
+
+> 사실 SPRING MVC는 다양한 문제들을 해결하면서 발전한 부분이어서 한번에 다 설명 드리긴 어렵지만 결국 Dispatcher Servlet이라는 Front Controller의 역할을 하는 녀석이
+> HTTP 요청에 맞는 핸들러를 조회하고 해당 핸들러를 처리할 수 있는 어댑터를 찾아서 해당 핸들러를 호출하고, 그 핸들러에서 처리한 모델과 뷰 정보를 내려주면 view Resolver
+> 를 이용해 해당 View 를 찾은 다음에 랜더링해서 HTML을 내려주는 구조입니다.
+
+##### >example code
+```
+<%@ page import="java.util.List" %>
+<%@ page import="hello.servlet.domain.member.MemberRepository" %>
+<%@ page import="hello.servlet.domain.member.Member" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+ MemberRepository memberRepository = MemberRepository.getInstance();
+ List<Member> members = memberRepository.findAll();
+%>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <a href="/index.html">메인</a>
+        <table>
+             <thead>
+             <th>id</th>
+             <th>username</th>
+             <th>age</th>
+             </thead>
+             <tbody>
+            <%
+             for (Member member : members) {
+                 out.write(" <tr>");
+                 out.write(" <td>" + member.getId() + "</td>");
+                 out.write(" <td>" + member.getUsername() + "</td>");
+                 out.write(" <td>" + member.getAge() + "</td>");
+                 out.write(" </tr>");
+             }
+            %>
+             </tbody>
+        </table>
+    </body>
+</html>
 ```
 
 ##### 질문 4-1. 그래서 저건 뭔데요?
