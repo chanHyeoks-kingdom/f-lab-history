@@ -21,16 +21,40 @@
 > 둘 다 thread safety를 지원하기 위해 컬렉션 클래스인데 `데이터를 보호하는 범위와 방식`에 차이가 있습니다. synchronized Collection은 전체 컬렉션을 잠구고
 > Concurrent Collection은 특정 부분에만 락 프리를 적용하는 방식으로 thread safety를 보장합니다. 그래서 synchronized Collcetion보다 Concurreent Collection이
 > 대체로 성능이 더 좋은 편입니다.
+
+```
 (Q1. 근데 무조건 더 좋나? 실제로 어떤 상황에서 더 좋은지 비교 해보기),
 (Q2. 세그먼트에 대한 명확한 정의 및 실체 찾아보기)
 (Q3. CAS: 기대하는 연산 결과와 같거나 하드웨어 레벨에서 스레드 침범이 일어나지 않음을 확인받은 상태에서만 변수의 값을 업데이트, 라는 설명 맞는지 다시 검토)
 ```
 
-##### 질문 1-1. 
+##### 질문 1-1. 어떤 상황에서 Synchronized Collection을 사용하는 것이 좋고, 어떤 상황에서는 Concurrent Collection을 사용하는 것이 좋나요?
 
-```
--
-```
+> (1) `synchronized collction`은 `동시에 많은 스레드가 작업하지 않거나 복잡도가 낮은 간단한 동기화 작업에 적합`합니다.
+> 
+> (2) 반면 `Concurrent Collection`은 `고성능이 필요하거나 많은 스레드가 데이터에 동시에 접근해야 하는 상황`에서 더 나은 선택입니다.
+
+> 근데 사실 이게 요청 받아 줄 때 까지 `쓰레드 가지고 있는 상태로 요청 계속 반복해서 쏘냐`, `CPU 자원 돌려주고 락 받을 때 까지 기다리냐` 차이여서
+> 이런 부분 고려해서 선택하면 좋을 거 같습니다.
+
+
+
+##### 질문 1-2. Concurrent Collection이 특정 부분만 잠그는 방식으로 동시성을 관리한다고 했는데, 이게 구체적으로 어떤 원리로 작동하나요?
+> 자바 8 이전에는 `맵을 여러 부분으로 나누어 독립적으로 잠구는 방식`을 사용하다가 8버전 부터는 CAS 연산이라는 걸 이용해서 `락 없이 thread safety를 준수`하는 방식을
+> 사용합니다.
+
+
+##### 질문 1-3. "Synchronized Collection과 Concurrent Collection 모두 스레드 안전하다고 하는데, 그럼 둘 사이에 안전성 면에서 차이가 있나요?"
+> 제가 느끼기엔 큰 차이는 없고 다만 Concurrent collection이 Compute 같은 복합 연산을 위한 메서드 정도를 더 잘 지원해주는 것 정도로 이해했습니다.
+
+
+
+##### 질문 1-4. "Synchronized Collection과 Concurrent Collection 외에 다른 동시성 컬렉션 기술이 있나요?"
+> 뭐 .. `BlockingQueue`나 `CopyOnWrite ~` 같은 것들이 있습니다.
+
+
+##### 질문 1-5. CopyOnWriteArrayList는 뭔데요?
+> ... 걍 복사본에 쓰게 하는겨
 
 <br>
 
@@ -62,6 +86,8 @@
 사실 equals()와 hashCode()사이에는 직접적인 의존관계는 없습니다. 다만 둘 다 객체의 동등성이나 동일성 비교를 위해 필요한 개념이다보니 둘 중 하나를 변경했다면 나머지 하나도 그 기준에 맞춰 변경해주어야 한다는
 '계약 관계'가 있습니다. 예컨대 hashMap 같은 곳에서 put을 할 때는 내부적으로 key로 넘어온 객체의 hashCode를 이용하는데 이 떄 hashCode의 기준이 equals와 같지 않다면 의도치 않은 결과가 발생하게 됩니다.
 ```
+
+
 
 
 
