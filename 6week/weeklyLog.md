@@ -17,7 +17,7 @@
 
 ##### 1. JDBC에 대해 설명하시오 (키워드: 드라이버, 트랜잭션, Statement vs PreparedStatement, ResultSet)
 ```
-JDBC 드라이버는요 ..
+JDBC 드라이버는 자바와 DB를 연결해주는 다리 역할을 하는 소프트웨어 입니다. 
 ```
 > ..
 > ..
