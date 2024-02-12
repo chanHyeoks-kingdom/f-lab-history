@@ -131,12 +131,12 @@ PreparedStatement는 미리 SQL을 컴파일 해서 '?' 같은 플레이스 홀�
 SQL을 처리한다는 특성 덕분에 일부 SQL 인젝션을 방지할 수 있습니다. 
 ```
 
-###### SQL 인젝션은 어떻게 방지하는건가요?
+###### SQL 인젝션은 어떻게 방지하는건가요?  -> 이거 답변 지금 다 엉터리 다시 볼 것
 
 ```
 # getConnection() in mysqlDataSource.class
 
-protected java.sql.Connection getConnection(Properties props) throws SQLException {
+protected java.sql.Connection getConnection(Properties props) throws SQLException { // 이거는 커넥션이랑 상관 없음, 그냥 DataSource 인터페이스 구현체라도 커넥션 풀 다루는거랑 관계 있는게 아니라 그냥 실제 커넥션 넣을때 필요한 ID, PORT등 설정하는거임
     String jdbcUrlToUse = this.explicitUrl ? this.url : getUrl();
 
     //
@@ -223,6 +223,7 @@ public java.sql.PreparedStatement prepareStatement(String sql) throws SQLExcepti
 
 
 ----------
+----------
 
 ##### 2. DB Connection Pool의 동작원리에 대해 설명하시오
 ```
@@ -231,6 +232,14 @@ public java.sql.PreparedStatement prepareStatement(String sql) throws SQLExcepti
 > ..
 > ..
 > ..
+>
+
+
+----
+> ###### 꼬리질문 1. Connection Pool은 얼마가 돼야 적당할까요?
+```
+
+```
 
 
 ##### 3. 데이터베이스 clustered index vs non-clustered index에 대해 설명하시오
