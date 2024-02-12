@@ -225,9 +225,11 @@ public java.sql.PreparedStatement prepareStatement(String sql) throws SQLExcepti
 ----------
 ----------
 
-##### 2. DB Connection Pool의 동작원리에 대해 설명하시오
+##### 2. DB Connection Pool의 동작원리에 대해 설명하시오 [[참고1], ](https://dkswnkk.tistory.com/685)
 ```
-
+앞서 봤듯이 커넥션은 객체다. 이런 객체를 계속 생성하는 것도 비용이 드는데, 사실 더 중요한 건 DataBase에 연결하는 것이 TCP/IP 통신이라는 부분이다. 때문에 연결, 해제를 할 때에 시간이 많이 소요된다. 사실 통신이란게 비용을 많이 먹는다.
+그래서 애플리케이션 뜰 때 객체들을 미리 생성해두고 그걸 할당해주는 방식으로 하는게 DB Connection Pool이고, 이는 java.sql에 보면 DataSource라는 인터페이스가 있는데 이걸 구현함으로서 제공할 수 있게 된다. 예컨대 HikariCP 같은 경량화된
+DB COnnection Pool등이 있다.
 ```
 > ..
 > ..
@@ -238,7 +240,7 @@ public java.sql.PreparedStatement prepareStatement(String sql) throws SQLExcepti
 ----
 > ###### 꼬리질문 1. Connection Pool은 얼마가 돼야 적당할까요?
 ```
-
+쓰레드도 고려해야하고, 다양하게 고려해야한다.
 ```
 
 
