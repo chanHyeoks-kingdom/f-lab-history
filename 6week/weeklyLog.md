@@ -186,9 +186,24 @@ public java.sql.PreparedStatement prepareStatement(String sql) throws SQLExcepti
 ```
 
 
-> ..
-> ..
-> ..
+<br>
+<br>
+
+
+
+----
+> ##### 꼬리질문3. JDBC를 쓸 때 트랜잭션 얘기 해주셨는데 그게 뭔가요?
+```
+트랜잭션은 간단히 말하면 '작업의 단위'인데요, 예를 들어 계좌 이체 업무의 경우 '(1) 잔고 조회, (2) 금액 비교, (3) 송금 요청, (4) 송금 가능 확인, (5) 현재 잔고 줄이고 상대 잔고 올리기' 같이 어떤 작업의 최소 단위를 트랜잭션이라고 합니다.
+근데 jdbc의 경우 쿼리를 실행하는 순간 commit을 하는 autoCommit 설정이 default여서 connection.setAutoCommit(false); 등의 작업을 통해 commit을 수동으로 변경 후 작업 완료시에 commit토록, 그 사이에 문제 발생시 conn.rollback()등의 작업을
+수행해야 합니다.
+```
+
+----
+> ##### 꼬리질문4. 트랜잭션이 뭔가요?
+```
+이건 할 말 겁나 많아서 일단 보류 ..
+```
 
 @ preparedStatement, ResultSet, DB Connection을 닫아주지 않는 경우에 생기는 문제도 고민해보기.
 @ 여기서 @Transactional과 함께 PSA 개념도 설명 가능
