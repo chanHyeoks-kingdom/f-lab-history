@@ -246,7 +246,8 @@ DB COnnection Pool등이 있다.
 
 ##### 3. 데이터베이스 clustered index vs non-clustered index에 대해 설명하시오
 ```
-
+"Clustered index는 데이터베이스 테이블의 레코드를 실제로 저장하는 순서와 매치되어 있어서, 특정 데이터를 찾을 때 빠른 검색 속도를 자랑해. 반면에, non-clustered index는 별도의 공간에 인덱스가 저장되어 있어서 실제 데이터와는 별개로 관리되지.
+이 방식은 추가적인 인덱스를 만들 수 있어서 검색 옵션을 다양화할 수 있지만, clustered index에 비해 접근 속도가 느릴 수 있어."
 ```
 > ..
 > ..
