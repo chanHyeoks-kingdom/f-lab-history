@@ -252,6 +252,7 @@ public java.sql.PreparedStatement prepareStatement(String sql) throws SQLExcepti
 @ 실제 구현 방법 확인해보기
 @ 데이터가 언제 정렬되는지 검토해보기
 @ 인덱스를 구분하는 다른 방법들 확인해보기
+@ 인덱스 조회할 때, 인덱스 생성할 때에 대해서 살펴보기
 ```
 > ..
 > ..
