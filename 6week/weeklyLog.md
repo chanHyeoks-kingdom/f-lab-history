@@ -20,10 +20,26 @@
 
 #### 1. JDBC에 대해 설명하시오 (키워드: 드라이버, 트랜잭션, Statement vs PreparedStatement, ResultSet)
 ```
-JDBC는 자바 애플리케이션에서 데이터베이스에 접근하기 위해 필요한 표준 API 입니다. 자바에서 제공하는 java.sql을 통해 DB CONNECTION을 받고 쿼리를 요청하는 일들을 할 수 있는데 이 때 필요한 JDBC API를
-실제 각 벤더별로 구현한게 JDBC Dirver입니다. 이 과정에서 쿼리 생성과 실행은 PreparedStatement등을 사용하고 응답 등은 ResultSet을 통해 DB에서 얻어온 데이터를 사용할 수 있습니다. 근데 이 때 기본적으로
-쿼리를 execute 할 때 자동으로 커밋토록 되어 있는데 이러면 트랜잭션을 관리할 수 없기 때문에 필요시에는 Connection 객체의 setAutoCommit(false) 설정이나 commit(), rollback() 메소드를 활용하는 방법들을 고려해야합니다.
+[초안]
+JDBC는 자바 애플리케이션에서 데이터베이스에 접근하기 위해 필요한 표준 API 입니다.
+
+java.sql의 인터페이스인 DataSource등을 구현해 DB CONNECTION을 받고 쿼리를 요청하는 일들을 할 수 있는데 이 때 필요한 JDBC API를 실제 각 벤더별로 구현한게 JDBC Dirver입니다. 이 과정에서 쿼리 생성과 실행은 PreparedStatement등을
+사용하고 응답 등은 ResultSet을 통해 DB에서 얻어온 데이터를 사용할 수 있습니다. 근데 이 때 기본적으로 쿼리를 execute 할 때 자동으로 커밋토록 되어 있는데 이러면 트랜잭션을 관리할 수 없기 때문에 필요시에는 Connection 객체의 setAutoCommit(false)
+설정이나 commit(), rollback() 메소드를 활용하는 방법들을 고려해야합니다.
+
+# 직관적이지 않음, 뭔 소리를 하고 싶은거지 ..
 ```
+
+
+```
+[개선안]
+JDBC는 자바 코드로 데이터베이스를 다루기 위해 필요한 인터페이스 입니다. 각 DBMS는 이를 구현한 JDBC 구현체를 제공하는데 이게 바로 드라이버 라는 것 입니다. 일반적으로 이렇게 작성된 쿼리는 preStatement나 Statement를 통해 정의하고 커밋할 수 있
+는데 preSatatement는 '?'라는 플레이스 홀더에 대해 동적으로 setString()하는 방식을 사용하고 있어서 유사한 처리를 많이 할 때 이점이 있습니다. 또 setString()을 하는 과정에서 sql injection을 방지하게 되서 보안적인 측면에도 이점이 있습니다.
+어쨌든 무엇을 선택하든 execute()시에 바로 커밋되는데 복합적인 쿼리에 대해서 트랜잭션을 보장할 필요가 있다면 Connection 객체의 setAutocommit(false)메서드를 호출해 자동 커밋을 끈 다음 직접 commit(), rollback() 메서드를 이용해 트랜잭션 처리를
+해주어야 한다는 것 까지가 JDBC에 대한 설명입니다! (?)
+```
+
+
 <br>
 
 > ##### 꼬리질문1. DB_CONNECTION 등의 작업을 수행할 때 내부적으로 JDBC api를 구현한 구현체(JDBC Driver)가 필요하다는 말씀이신가요
