@@ -261,7 +261,9 @@ public java.sql.PreparedStatement prepareStatement(String sql) throws SQLExcepti
 
 ##### 4. 객체 지향 설계 5원칙 - SOLID (vs 다른 개발 원칙)
 ```
-
+흔히 S(Single Responsibility Principle), O(Open/Closed Principle), L(Liscov Substitution Principle), I(Interface segregation principle), D(Dependency inversion principle)은
+객체지향을 설명하라고 할 때 가장 자주 나오는 개념중에 하나인데요, 사실 별 거 없고 각 원칙들을 지키라는 얘기입니다. 예컨대 단일 책임 원칙은 클래스는 '하나의 책임'만 가지고 있으라는 말이구요, 개방폐쇄 원칙 같은 건 의존성이 있는
+객체의 내용이 변경되도 내부 요인이 변경되지 않도록 하라는 의미입니다. 인터페이스 분리 원칙은 그냥 구현체 직접 쓰지 말란 얘기고, 의존관계 역전은 의존성 주입 받아 쓰라는 얘기입니다.
 ```
 > ..
 > ..
