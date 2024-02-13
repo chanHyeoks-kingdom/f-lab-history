@@ -149,60 +149,8 @@ public class Driver extends NonRegisteringDriver implements java.sql.Driver {
 PreparedStatement는 미리 SQL을 컴파일 해서 '?' 같은 플레이스 홀더로 지정해둔 파라미터만 setString(), setInt()등의 메서드를 사용해 동적으로 처리할 수 있기 때문에 실행 횟수가 많아질수록 성능상의 이점을 가져갈 수 있습니다. 또 미리
 SQL을 처리한다는 특성 덕분에 일부 SQL 인젝션을 방지할 수 있습니다. 
 ```
+###### + setString()이 왜 sql 인젝션을 방지하는가 .. 기존의 String에 + 연산을 이용한 방법이 sql injection에 취햑함은 확인
 
-###### SQL 인젝션은 어떻게 방지하는건가요?  -> 이거 답변 지금 다 엉터리 다시 볼 것
-
-```
-# getConnection() in mysqlDataSource.class
-
-protected java.sql.Connection getConnection(Properties props) throws SQLException { // 이거는 커넥션이랑 상관 없음, 그냥 DataSource 인터페이스 구현체라도 커넥션 풀 다루는거랑 관계 있는게 아니라 그냥 실제 커넥션 넣을때 필요한 ID, PORT등 설정하는거임
-    String jdbcUrlToUse = this.explicitUrl ? this.url : getUrl();
-
-    //
-    // URL should take precedence over properties
-    //
-    ConnectionUrl connUrl = ConnectionUrl.getConnectionUrlInstance(jdbcUrlToUse, null);
-    Properties urlProps = connUrl.getConnectionArgumentsAsProperties();
-    urlProps.remove(PropertyKey.HOST.getKeyName());
-    urlProps.remove(PropertyKey.PORT.getKeyName());
-    urlProps.remove(PropertyKey.DBNAME.getKeyName());
-    urlProps.stringPropertyNames().stream().forEach(k -> props.setProperty(k, urlProps.getProperty(k)));
-
-    return mysqlDriver.connect(jdbcUrlToUse, props);
-}
-
-```
-> ##### 위 코드에서 얻어내는 `connect()의 리턴 값`이 `DriverManager.getConnection(..)`로 부터 받는 connection 객체인데, 우리가 `PreparedStatement preparedStatement = connection.prepareStatement(query);`할 때 받는 객체는 아래와 같다.
-```
-// in com.mysql.cj.jdbc.ConnectionImpl.class (1523 line)
-@Override
-public java.sql.PreparedStatement prepareStatement(String sql) throws SQLException {
-    return prepareStatement(sql, DEFAULT_RESULT_SET_TYPE, DEFAULT_RESULT_SET_CONCURRENCY);
-}
-```
-
-> ##### 일단 내가 말하고 싶은 건 결국 저 connection 객체로부터 prepareStatement 라는 녀석이 생성을 받아올 때 ClientPreparedStatement라는 걸 준다는 얘기야 `PreparedStatement`를 상속받는 녀석이라 직접적으론 보이지 않지만 어쨌든,
-```
-    @Override
-    public java.sql.PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
-        synchronized (getConnectionMutex()) {
-            ClientPreparedStatement pStmt = null;
-            ..
-
-            return pStmt;
-        }
-    }
-```
-
-> ##### 결국 저희가 preparedStatement.setString(..)같은 걸 사용 할 때는 아래 코드를 사용하는건데, '?' 플레이스 홀더에 들어갈 부분을 setString()으로 입력하는 걸 볼 수 있습니다. 저 경우 SQL 명령어로 해석되지 않아 문제가 발생치 않게 됩니다.
-```
-    @Override
-    public void setString(int parameterIndex, String x) throws SQLException {
-        synchronized (checkClosed().getConnectionMutex()) {
-            ((PreparedQuery) this.query).getQueryBindings().setString(getCoreParameterIndex(parameterIndex), x);
-        }
-    }
-```
 
 
 <br>
@@ -227,7 +175,6 @@ public java.sql.PreparedStatement prepareStatement(String sql) throws SQLExcepti
 @ preparedStatement, ResultSet, DB Connection을 닫아주지 않는 경우에 생기는 문제도 고민해보기.
 @ 여기서 @Transactional과 함께 PSA 개념도 설명 가능
 @ 또 Connection의 경우에는 static 객체 객체이기 때문에 사용이 끝났으면 꼭 close()를 해줘야 합니다. <- 이 내용 자세히 보기
-
 
 
 <br>
@@ -288,3 +235,69 @@ public java.sql.PreparedStatement prepareStatement(String sql) throws SQLExcepti
 > ..
 > ..
 
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+```
+[그냥 부록: 개소리 모음]
+# getConnection() in mysqlDataSource.class
+
+protected java.sql.Connection getConnection(Properties props) throws SQLException { // 이거는 커넥션이랑 상관 없음, 그냥 DataSource 인터페이스 구현체라도 커넥션 풀 다루는거랑 관계 있는게 아니라 그냥 실제 커넥션 넣을때 필요한 ID, PORT등 설정하는거임
+    String jdbcUrlToUse = this.explicitUrl ? this.url : getUrl();
+
+    //
+    // URL should take precedence over properties
+    //
+    ConnectionUrl connUrl = ConnectionUrl.getConnectionUrlInstance(jdbcUrlToUse, null);
+    Properties urlProps = connUrl.getConnectionArgumentsAsProperties();
+    urlProps.remove(PropertyKey.HOST.getKeyName());
+    urlProps.remove(PropertyKey.PORT.getKeyName());
+    urlProps.remove(PropertyKey.DBNAME.getKeyName());
+    urlProps.stringPropertyNames().stream().forEach(k -> props.setProperty(k, urlProps.getProperty(k)));
+
+    return mysqlDriver.connect(jdbcUrlToUse, props);
+}
+
+```
+> ##### 위 코드에서 얻어내는 `connect()의 리턴 값`이 `DriverManager.getConnection(..)`로 부터 받는 connection 객체인데, 우리가 `PreparedStatement preparedStatement = connection.prepareStatement(query);`할 때 받는 객체는 아래와 같다.
+```
+// in com.mysql.cj.jdbc.ConnectionImpl.class (1523 line)
+@Override
+public java.sql.PreparedStatement prepareStatement(String sql) throws SQLException {
+    return prepareStatement(sql, DEFAULT_RESULT_SET_TYPE, DEFAULT_RESULT_SET_CONCURRENCY);
+}
+```
+
+> ##### 일단 내가 말하고 싶은 건 결국 저 connection 객체로부터 prepareStatement 라는 녀석이 생성을 받아올 때 ClientPreparedStatement라는 걸 준다는 얘기야 `PreparedStatement`를 상속받는 녀석이라 직접적으론 보이지 않지만 어쨌든,
+```
+    @Override
+    public java.sql.PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
+        synchronized (getConnectionMutex()) {
+            ClientPreparedStatement pStmt = null;
+            ..
+
+            return pStmt;
+        }
+    }
+```
+
+> ##### 결국 저희가 preparedStatement.setString(..)같은 걸 사용 할 때는 아래 코드를 사용하는건데, '?' 플레이스 홀더에 들어갈 부분을 setString()으로 입력하는 걸 볼 수 있습니다. 저 경우 SQL 명령어로 해석되지 않아 문제가 발생치 않게 됩니다.
+```
+    @Override
+    public void setString(int parameterIndex, String x) throws SQLException {
+        synchronized (checkClosed().getConnectionMutex()) {
+            ((PreparedQuery) this.query).getQueryBindings().setString(getCoreParameterIndex(parameterIndex), x);
+        }
+    }
+```
