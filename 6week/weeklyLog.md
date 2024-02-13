@@ -34,10 +34,10 @@ java.sql의 인터페이스인 DataSource등을 구현해 DB CONNECTION을 받�
 ```
 [개선안]
 JDBC는 자바 코드로 데이터베이스를 다루기 위해 필요한 인터페이스 입니다. 각 DBMS는 이를 구현한 JDBC 구현체를 제공하는데 이게 바로 드라이버 라는 것 입니다. 이 드라이버로 부터 받을 수 있는 커넥션을 통해 우리는 preStatement나 Statement를 정의하고 이를
-이용해 커밋할 수 있는데 preSatatement는 '?'라는 플레이스 홀더에 대해 동적으로 setString()하는 방식을 사용하고 있어서 유사한 처리를 많이 할 때 이점이 있습니다. 또 setString()을 하는 과정에서 sql injection을 방지하게 되서 보안적인 측면에도 이점이 있어서
-이런 측면들을 고려해 쿼리를 만든 뒤 DB의 쿼리를 보내기 위해 execute()를 해야합니다. 이 떄 default 설정은 이 작업과 함께 커밋이 일어나는데 복합적인 쿼리에 대해서 트랜잭션을 보장할 필요가 있다면 Connection 객체의 setAutocommit(false)메서드를 호출해 자동
-커밋을 끈 다음 직접 commit(), rollback() 메서드를 이용해 트랜잭션 처리를 해주어야 합니다. 이런 작업 중 SELECT 관련 작업의 결과는 executeQuery() 메서드를 이용해 ResultSet이라는 형태로 받을 수 있는데 이 클래스의 getString()메서드를 이용해 필드 값등을
-추출하는 작업등을 할 수 있습니다.
+이용해 커밋할 수 있는데 preSatatement는 '?'라는 플레이스 홀더에 대해 동적으로 setString()하는 방식을 사용하고 있어서 하나의 메서드에서 특정 조건 값만 변경하는 처리 로직이 많이 반복될 때 이점이 있습니다. 또 setString()을 하는 과정에서 sql injection을
+방지하게 되서 보안적인 측면에도 이점이 있어서 이런 측면들을 고려해 쿼리를 만든 뒤 DB의 쿼리를 보내기 위해 execute()를 해야합니다. 이 떄 default 설정은 이 작업과 함께 커밋이 일어나는데 복합적인 쿼리에 대해서 트랜잭션을 보장할 필요가 있다면 Connection 객
+체의 setAutocommit(false)메서드를 호출해 자동 커밋을 끈 다음 직접 commit(), rollback() 메서드를 이용해 트랜잭션 처리를 해주어야 합니다. 이런 작업 중 SELECT 관련 작업의 결과는 executeQuery() 메서드를 이용해 ResultSet이라는 형태로 받을 수 있는데 이 클
+래스의 getString()메서드를 이용해 필드 값등을 추출하는 작업등을 할 수 있습니다.
 
 여기까지가 JDBC에 대한 설명입니다.
 ```
