@@ -27,42 +27,19 @@
 > 다음 직접 commit(), rollback() 메서드를 이용해 트랜잭션 처리를 해주어야 합니다. 이런 작업 중 SELECT 관련 작업의 결과는 executeQuery() 메서드를 이용
 > 해 ResultSet이라는 형태로 받을 수 있는데 이 클래스의 getString()메서드를 이용해 필드 값등을 추출하는 작업등을 할 수 있습니다.
 
-```
-[초안]
-JDBC는 자바 애플리케이션에서 데이터베이스에 접근하기 위해 필요한 표준 API 입니다.
-
-java.sql의 인터페이스인 DataSource등을 구현해 DB CONNECTION을 받고 쿼리를 요청하는 일들을 할 수 있는데 이 때 필요한 JDBC API를 실제 각 벤더별로 구현한게 JDBC Dirver입니다. 이 과정에서 쿼리 생성과 실행은 PreparedStatement등을
-사용하고 응답 등은 ResultSet을 통해 DB에서 얻어온 데이터를 사용할 수 있습니다. 근데 이 때 기본적으로 쿼리를 execute 할 때 자동으로 커밋토록 되어 있는데 이러면 트랜잭션을 관리할 수 없기 때문에 필요시에는 Connection 객체의 setAutoCommit(false)
-설정이나 commit(), rollback() 메소드를 활용하는 방법들을 고려해야합니다.
-
-# 직관적이지 않음, 뭔 소리를 하고 싶은거지 ..
-```
-
-
-```
-[개선안]
-JDBC는 자바 코드로 데이터베이스를 다루기 위해 필요한 인터페이스 입니다. 각 DBMS는 이를 구현한 JDBC 구현체를 제공하는데 이게 바로 드라이버 라는 것 입니다. 이 드라이버로 부터 받을 수 있는 커넥션을 통해 우리는 preStatement나 Statement를 정의하고 이를
-이용해 커밋할 수 있는데 preSatatement는 '?'라는 플레이스 홀더에 대해 동적으로 setString()하는 방식을 사용하고 있어서 하나의 메서드에서 특정 조건 값만 변경하는 처리 로직이 많이 반복될 때 이점이 있습니다. 또 setString()을 하는 과정에서 sql injection을
-방지하게 되서 보안적인 측면에도 이점이 있습니다. 반면 Statement는 정적 쿼리를 직관적으로 쓸 수 있다는 이점이 있어서 이런 측면들을 고려해 쿼리를 만든 뒤 DB의 쿼리를 보내기 위해 execute()를 해야합니다. 이 떄 default 설정은 이 작업과 함께 커밋이 일어나는데
-복합적인 쿼리에 대해서 트랜잭션을 보장할 필요가 있다면 Connection 객체의 setAutocommit(false)메서드를 호출해 자동 커밋을 끈 다음 직접 commit(), rollback() 메서드를 이용해 트랜잭션 처리를 해주어야 합니다. 이런 작업 중 SELECT 관련 작업의 결과는 executeQuery()
-메서드를 이용해 ResultSet이라는 형태로 받을 수 있는데 이 클래스의 getString()메서드를 이용해 필드 값등을 추출하는 작업등을 할 수 있습니다.
-
-여기까지가 JDBC에 대한 설명입니다.
-```
-
-#### ++ 추가로 DAO 패턴이나 best practice. (JDBC를 사용할 떄 고려해야할)들에 대해서 고민해보기기
-
+#### TODO 1. JDBC 사용할 때 고려할 수 있는 DAO 패턴이나 
+#### TODO @. JDBC 활용 best practice 작성해보기
 
 <br>
 
 > ##### 꼬리질문1. DB_CONNECTION 등의 작업을 수행할 때 내부적으로 JDBC api를 구현한 구현체(JDBC Driver)가 필요하다는 말씀이신가요
 
-###### 네! 아래와 같은 작업을 수행할 때 내부적으로 java.sql의 Driver라는 인터페이스를 구현한 구현체가 필요합니다! 
+###### 네! 예를 들어 아래와 같은 작업을 수행시에 때 java.sql의 Driver라는 인터페이스를 구현한 구현체가 필요합니다! 
 
 ```
 Connection connection = DriverManager.getConnection(url, user, password);
 ```
-###### 예컨대 위 작업을 수행할 때 Connection을 얻는 과정에서 아래와 같은 동작을 수행하게 됩니다.
+###### 위 인터페이스에 대한 mysql의 JDBC driver의 구현체는 아래와 같고 Connection을 얻는 동작을 수행하게 됩니다.
 
 ```
 # getConnection() in DriverManage.class
@@ -159,7 +136,7 @@ public class Driver extends NonRegisteringDriver implements java.sql.Driver {
 PreparedStatement는 미리 SQL을 컴파일 해서 '?' 같은 플레이스 홀더로 지정해둔 파라미터만 setString(), setInt()등의 메서드를 사용해 동적으로 처리할 수 있기 때문에 실행 횟수가 많아질수록 성능상의 이점을 가져갈 수 있습니다. 또 미리
 SQL을 처리한다는 특성 덕분에 일부 SQL 인젝션을 방지할 수 있습니다. 
 ```
-###### + setString()이 왜 sql 인젝션을 방지하는가 .. 기존의 String에 + 연산을 이용한 방법이 sql injection에 취햑함은 확인
+###### TODO 1. setString()이 왜 sql 인젝션을 방지하는가 .. 기존의 String에 + 연산을 이용한 방법이 sql injection에 취햑함은 확인
 
 
 
