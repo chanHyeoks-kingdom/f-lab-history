@@ -27,8 +27,8 @@
 > 다음 직접 commit(), rollback() 메서드를 이용해 트랜잭션 처리를 해주어야 합니다. 이런 작업 중 SELECT 관련 작업의 결과는 executeQuery() 메서드를 이용
 > 해 ResultSet이라는 형태로 받을 수 있는데 이 클래스의 getString()메서드를 이용해 필드 값등을 추출하는 작업등을 할 수 있습니다.
 
-#### TODO 1. JDBC 사용할 때 고려할 수 있는 DAO 패턴이나 
-#### TODO @. JDBC 활용 best practice 작성해보기
+###### TODO 1. JDBC 사용할 때 고려할 수 있는 DAO 패턴이나 
+###### TODO @. JDBC 활용 best practice 작성해보기
 
 <br>
 
