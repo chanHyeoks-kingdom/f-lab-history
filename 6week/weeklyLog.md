@@ -224,7 +224,7 @@ mysql 공식 문서의 경우 600명의 유저에 대해 15~20개의 커넥션�
 > ..
 
 
-##### 4. 객체 지향 설계 5원칙 - SOLID (vs 다른 개발 원칙)
+##### 4. 객체 지향 설계 5원칙 - SOLID (vs 다른 개발 원칙) [[참고], ](https://inpa.tistory.com/entry/OOP-%F0%9F%92%A0-%EA%B0%9D%EC%B2%B4-%EC%A7%80%ED%96%A5-%EC%84%A4%EA%B3%84%EC%9D%98-5%EA%B0%80%EC%A7%80-%EC%9B%90%EC%B9%99-SOLID)
 ```
 흔히 S(Single Responsibility Principle), O(Open/Closed Principle), L(Liscov Substitution Principle), I(Interface segregation principle), D(Dependency inversion principle)은
 객체지향을 설명하라고 할 때 가장 자주 나오는 개념중에 하나인데요, 사실 별 거 없고 각 원칙들을 지키라는 얘기입니다. 예컨대 단일 책임 원칙은 클래스는 '하나의 책임'만 가지고 있으라는 말이구요, 개방폐쇄 원칙 같은 건 의존성이 있는
