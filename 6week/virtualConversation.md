@@ -39,7 +39,7 @@
 
 
 > #### 꼬리질문 5. JDBC 관련해서 best practice는 한 번 따라 쳐 보셨어요?
->> ##### b. 지금 쳐보려구용 ..
+>> ##### b. Connection, statement, resultSet 등의 객체등을 자원 해제 해줘야 해서 try with resource라는 문법을 사용하면 좋고 트랜잭션 처리나 pstmt등을 이용해 인젝션 방어, 미리 컴파일을 통한 성능상의 이점을 가져갈 수 있을 거 같습니다.
 
 
 <br><br>
