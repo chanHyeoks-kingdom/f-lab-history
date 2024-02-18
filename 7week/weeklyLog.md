@@ -120,6 +120,58 @@ OCP를 준수한다는 건 결국 그 안에서 사용되는 모든 객체에 �
 메모리 과부하로 인한 OOME를 방지할 수 있습니다.
 ```
 
+![image](https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/a82b384f-9723-4c06-8387-ecd3d4ebac43)
+
+![image](https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/6dee176d-92f7-42c8-a686-1e331cb5781e)
+
+
+<br>
+
+<details>
+    <summary> 꼬리질문 1. </summary>
+
+##### 꼬리질문 1. 
+
+
+    
+</details>
+
+<details>
+    <summary> 꼬리질문 2. </summary>
+
+##### 꼬리질문 2. 
+
+
+    
+</details>
+
+<details>
+    <summary> 꼬리질문 3. </summary>
+
+##### 꼬리질문 3. 
+
+
+    
+</details>
+
+<details>
+    <summary> 꼬리질문 4. </summary>
+
+##### 꼬리질문 4. 
+
+
+    
+</details>
+
+<details>
+    <summary> 꼬리질문 5. </summary>
+
+##### 꼬리질문 5. 
+
+
+    
+</details>
+
 
 
 
