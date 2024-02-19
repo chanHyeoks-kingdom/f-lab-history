@@ -293,6 +293,48 @@ HikariCp 같은 연결 풀 라이브러리를 사용하거나 DI를 이용하는
 <br>
 
 
+<details>
+    <summary> 꼬리질문 1. </summary>
+    
+##### 꼬리질문 1. 
+```
+
+```
+    
+</details>
+
+<details>
+    <summary> 꼬리질문 2. </summary>
+    
+##### 꼬리질문 2. 
+```
+
+```
+    
+</details>
+
+
+<details>
+    <summary> 꼬리질문 3. </summary>
+    
+##### 꼬리질문 3. 
+```
+
+```
+    
+</details>
+
+
+
+<details>
+    <summary> 꼬리질문 4. </summary>
+    
+##### 꼬리질문 4. 
+```
+
+```
+    
+</details>
 
 
 
@@ -302,9 +344,9 @@ HikariCp 같은 연결 풀 라이브러리를 사용하거나 DI를 이용하는
 
 
 ### 3. 스프링 빈 주입 방법에 대해 설명하시오
-> Bean을 주입하는 방법은 ..
+> Bean을 주입하는 방법은 ApplicationContext 객체를 통해 getBean()을 하거나 @Autowired를 사용할 수 있습니다.
 ```
-
+이 과정에서 여러 주입 방법이 있는데 대체로 생성자 주입이 선호됩니다.
 ```
 
 <details>
