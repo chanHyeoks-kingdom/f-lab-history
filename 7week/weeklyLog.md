@@ -286,7 +286,7 @@ HikariCp 같은 연결 풀 라이브러리를 사용하거나 DI를 이용하는
 <br>
 
 ### 2. 스프링의 IoC(Inversion of Control)과 DI(Dependency Injection)에 대해 설명하시오
-> IoC라는 건 `제어 권한을 프레임워크 쪽에 넘기는 걸 의미`하는데요, `이를 위해 사용할 수 있는 도구 중에 하나`가 DI 입니다. 스프링에서는 IoC의 `BeanFactory`나 `ApplicationContext`라는 인터페이스로 정의했고 이를 구현한 다양한 구현체를통해 DI를 손쉽게 제공합니다.
+> IoC라는 건 `객체의 생성부터 생명주기 관리 관련된 제어 권한을 프레임워크 쪽에 넘기는 걸 의미`하는데요, `이를 위해 사용할 수 있는 도구 중에 하나`가 DI 입니다. 스프링에서는 IoC의 `BeanFactory`나 `ApplicationContext`라는 인터페이스로 정의했고 이를 구현한 다양한 구현체를통해 DI를 손쉽게 제공합니다.
 ```
 DI는 앞전의 코드에서 봤듯이 AppConfig 같은 컨테이너를 이용해서 각자 클래스 내부에서 직접 객체를 생성치 않고 객체의 생명주기를 관리하는 별도 클래스를 사용하는 걸 의미하는데요, 스프링에서 이런 걸 해주는 개념이 BeanFactory와 ApplicationContext입니다.
 사실 ApplicationContext도 BeanFactory를 상속받는 개념인데 메시지 국제화, 이벤트 발행등의 더 많은 기능을 제공합니다. 그래서 이런 개념들을 실제로 구현한 AnnotationConfgApplicationContext 같은 구현체를 이용해 빈이라는 이름으로 객체들을 관리합니다.
@@ -345,7 +345,7 @@ DI는 앞전의 코드에서 봤듯이 AppConfig 같은 컨테이너를 이용�
 
 
 ### 3. 스프링 빈 주입 방법에 대해 설명하시오
-> Bean을 주입하는 방법은 ApplicationContext 객체를 통해 getBean()을 하거나 @Autowired를 사용할 수 있습니다.
+> Bean을 주입하는 방법은 ApplicationContext 객체를 통해 수동으로 getBean()을 하거나 @Autowired 애노테이션을 이용해 자동으로 빈을 주입할 수 있습니다.
 ```
 이 과정에서 여러 주입 방법이 있는데 대체로 생성자 주입이 선호됩니다. 필드 주입, 세터 주입등은 .. 같은 문제들이 있어 일반적으로 권고되지 않는 방법이라고 알고 있습니다.
 ```
