@@ -518,9 +518,9 @@ DI 없이도 애플리케이션을 개발할 순 있습니다. 근데 소프트�
 
 
 <details>
-    <summary> 꼬리질문 5. </summary>
+    <summary> 꼬리질문 6. </summary>
     
-##### 꼬리질문 5. 실제 프로젝트에서 Git Flow나 GitHub Flow를 적용했을 때의 경험담을 들려줄 수 있나요?
+##### 꼬리질문 6. 실제 프로젝트에서 Git Flow나 GitHub Flow를 적용했을 때의 경험담을 들려줄 수 있나요?
 ```
 
 ```
