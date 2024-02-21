@@ -390,6 +390,7 @@ DI 없이도 애플리케이션을 개발할 순 있습니다. 근데 소프트�
 ##### 꼬리질문 1. AOP의 주요 용어(Aspect, Join Point, Advice, Pointcut, Weaving)에 대해 설명해주세요.
 ```
 
+
 ```
     
 </details>
