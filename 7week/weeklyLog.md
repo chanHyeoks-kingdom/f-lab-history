@@ -444,7 +444,7 @@ public class LoggingAspect {
     
 ##### 꼬리질문 3. 스프링 AOP에서 Aspect를 구현하는 방법은 어떤 것들이 있나요?
 ```
-
+일단 AspectJ의 Aspect 애노테이션을 사용하는 방법이 있습니다.
 ```
     
 </details>
@@ -456,7 +456,7 @@ public class LoggingAspect {
     
 ##### 꼬리질문 4. 트랜잭션 관리에서 AOP를 어떻게 활용할 수 있나요?
 ```
-
+@Transactional 애노테이션이요 .. 트랜잭션 관리할 때 쓰는건데 그냥 저거 붙여주면 해당 트랜잭션 영역이 트랜잭션으로 묶이는 프록시 객체가 생성됩니다. 요 놈도 스프링이 빈으로 관리해줘서 바꿔치기가 가능한겁니다.
 ```
     
 </details>
