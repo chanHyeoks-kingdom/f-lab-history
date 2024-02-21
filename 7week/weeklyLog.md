@@ -389,9 +389,40 @@ DI 없이도 애플리케이션을 개발할 순 있습니다. 근데 소프트�
     
 ##### 꼬리질문 1. AOP의 주요 용어(Aspect, Join Point, Advice, Pointcut, Weaving)에 대해 설명해주세요.
 ```
-
-
+Aspect는 횡단 관심사를 모듈화한 거, Join Point 는 Aspect 어디 적용할건지, Advice는 코드가 특정 Join point의 전에 실행될건지 후에 실행될건지 등을 지정, pointcut은 어떤 메소드들을 대상으로 할건지를 정의합니다.
 ```
+```
+
+@Aspect
+public class LoggingAspect {
+
+    // Pointcut 정의: 모든 service 패키지 내의 메소드들을 대상으로 함
+    @Pointcut("execution(* com.example.service.*.*(..))")
+    private void forServiceLayer() {}
+
+    // Advice 정의: 메소드 실행 전
+    @Before("forServiceLayer()")
+    public void beforeAdvice() {
+        System.out.println("====> Logging BEFORE method execution");
+    }
+
+    // Advice 정의: 메소드 실행 후
+    @After("forServiceLayer()")
+    public void afterAdvice() {
+        System.out.println("====> Logging AFTER method execution");
+    }
+
+    // Advice 정의: 메소드 실행 주변 (전후)
+    @Around("forServiceLayer()")
+    public Object aroundAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        System.out.println("====> Logging AROUND method execution START");
+        Object result = proceedingJoinPoint.proceed(); // 실제 메소드 실행
+        System.out.println("====> Logging AROUND method execution END");
+        return result;
+    }
+}
+```
+
     
 </details>
 
@@ -466,6 +497,16 @@ DI 없이도 애플리케이션을 개발할 순 있습니다. 근데 소프트�
     
 </details>
 
+
+<details>
+    <summary> 꼬리질문 8. </summary>
+    
+##### 꼬리질문 8. 자바 동적 프록시랑 CGLIB 직접 사용해본 적 있나요?
+```
+
+```
+    
+</details>
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
