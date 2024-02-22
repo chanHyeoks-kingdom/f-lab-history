@@ -378,7 +378,7 @@ DI 없이도 애플리케이션을 개발할 순 있습니다. 근데 소프트�
 
 
 ### 4. Spring AOP(Aspect-Oriented Programming)에 대해 설명하시오
-> Spring AOP는 많은 코드에 공통적으로 들어가는 같은 형태의 코드를 분리하기 위해 고안된 AOP라는 프로그래밍 패러다임을 AspectJ와 SpringFramework의 SpringContext등을 통해 스프링에서 구현한 AOP가 스프링 AOP입니다. 내부적으로 프록시를 이용하고 이를 구현하기 위해 자바 표준 java.lang.relfect에서 제공하는 java 동적 프록시나 스프링 프레임워크의 내부에서 사용하는 CGLIB을 사용합니다.
+> Spring AOP는 많은 코드에 공통적으로 들어가는 같은 형태의 코드를 분리하기 위해 고안된 AOP라는 프로그래밍 패러다임을 AspectJ와 SpringContext등을 통해 구현한 AOP가 스프링 AOP입니다. 내부적으로 프록시를 이용하고 이를 구현하기 위해 자바 표준 java.lang.relfect에서 제공하는 java 동적 프록시나 스프링 프레임워크의 내부에서 사용하는 CGLIB을 사용합니다.
 ```
 
 ```
@@ -390,8 +390,8 @@ DI 없이도 애플리케이션을 개발할 순 있습니다. 근데 소프트�
     
 ##### 꼬리질문 1. AOP의 주요 용어(Aspect, Join Point, Advice, Pointcut, Weaving)에 대해 설명해주세요.
 ```
-Aspect는 횡단 관심사를 모듈화한 거, Join Point 는 Aspect 어디 적용할건지, Advice는 코드가 특정 Join point의 전에 실행될건지 후에 실행될건지 등을 지정, pointcut은 어떤 메소드들을 대상으로 할건지를 정의합니다. weaving은 aspect를 대상 객체에 적용해서 프록시 객체를 생성하는 과정을 말하고
-컴파일, 로드 타임, 런타임 등의 시점에 수행될 수 있습니다.
+Aspect는 횡단 관심사를 모듈화한 거, Join Point 는 Aspect 어디 적용할건지, Advice는 코드가 특정 Join point의 전에 실행될건지 후에 실행될건지 등을 지정, pointcut은 어떤 메소드들을 대상으로 할건지를 정의합니다.
+weaving은 aspect를 대상 객체에 적용해서 프록시 객체를 생성하는 과정을 말하고 컴파일, 로드 타임, 런타임 등의 시점에 수행될 수 있습니다.
 ```
 ```
 
