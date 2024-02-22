@@ -378,7 +378,7 @@ DI 없이도 애플리케이션을 개발할 순 있습니다. 근데 소프트�
 
 
 ### 4. Spring AOP(Aspect-Oriented Programming)에 대해 설명하시오
-> Spring AOP는 많은 코드에 공통적으로 들어가는 같은 형태의 코드를 분리하기 위해 고안된 AOP라는 프로그래밍 패러다임을 AspectJ와 SpringContext등을 통해 구현한 AOP가 스프링 AOP입니다. 내부적으로 프록시를 이용하고 이를 구현하기 위해 자바 표준 java.lang.relfect에서 제공하는 java 동적 프록시나 스프링 프레임워크의 내부에서 사용하는 CGLIB을 사용합니다.
+> Spring AOP는 많은 코드에 `공통적으로 들어가는 같은 형태의 코드를 분리`하기 위해 고안된 AOP라는 프로그래밍 패러다임을 `AspectJ와 SpringContext등을 통해 구현한 AOP가 스프링 AOP`입니다. `내부적으로 프록시`를 이용하고 이를 구현하기 위해 자바 표준 java.lang.relfect에서 제공하는 `java 동적 프록시`나 스프링 프레임워크의 내부에서 사용하는 `CGLIB`을 사용합니다.
 ```
 
 ```
