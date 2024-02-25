@@ -123,6 +123,14 @@
 고객은 본인이 구매 신청한 내역을 메인 페이지에서  고객 주문 내역 확인 및 민원 페이지에 접근해 확인할 수 있어, 서버로부터 고객ID에 맞는 조회정보를 받게돼
 ```
 
+
+
+<img width="457" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/f0f3bcd5-ec9a-45e7-88dc-8c80442d5387">
+
+<img width="372" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/cd24290c-ea28-4d15-a374-44f8cf09e3dd">
+
+
+
 <br>
 <br>
 <br>
