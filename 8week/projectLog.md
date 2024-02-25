@@ -132,6 +132,32 @@
 
 
 <br>
+
+
+# 6. 시나리오 와이어 프레임
+
+[상품 관리 로직]
+![image](https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/8c8a7e09-2f6b-40ce-8e4a-80ff7b7ffdeb)
+![image](https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/01d9a850-1330-46ca-88c5-0af846aa4deb)
+![image](https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/60a9370c-d95e-4712-96c8-c1e19b80946f)
+![image](https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/4275e92c-3ca1-4b30-9e04-da88f816cb6c)
+![image](https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/48f90a56-2410-4f40-b1f3-67178203489e)
+![image](https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/eef0adf0-faa5-4928-9628-e906318f4eab)
+
+
+<br>
+
+[메인 온라인 쇼핑몰 페이지]
+<img width="583" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/49f35175-75d0-4544-92c1-821f3e1cec42">
+<img width="556" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/2ac0d800-f406-42d5-8ebe-fabe7874a16d">
+<img width="723" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/918ebc2d-b938-4e09-b14f-0a834e666fb6">
+<img width="590" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/4385a819-364a-4e22-bc59-b49439490afb">
+<img width="579" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/4883a4ae-5032-4d02-8dfb-7134f6324172">
+
+
+
+
+
 <br>
 <br>
 <br>
