@@ -162,7 +162,6 @@
 
 
 # 7. API 명세
-
 # API 설계 문서
 
 ## 상품 관리 서버 API
@@ -347,7 +346,45 @@
 - **POST** `/customer/inquiries`
   - **Headers**
     ```
-   
+    Authorization: Bearer <token>
+    ```
+  - **Request Body**
+    ```json
+    {
+      "inquiry": "문의 내용"
+    }
+    ```
+  - **Response**
+    ```json
+    {
+      "success": true,
+      "inquiryId": 1
+    }
+    ```
+
+### 6. 구매 신청 내역 조회
+
+- **GET** `/orders/my`
+  - **Headers**
+    ```
+    Authorization: Bearer <token>
+    ```
+  - **Response**
+    ```json
+    [
+      {
+        "orderId": 1,
+        "orderedProducts": [
+          {
+            "productId": 1,
+            "quantity": 2
+          }
+        ],
+        "totalPrice": 20000
+      }
+    ]
+    ```
+
 
 
 
