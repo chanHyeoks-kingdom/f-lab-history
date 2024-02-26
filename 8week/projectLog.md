@@ -159,6 +159,205 @@
 
 
 <br>
+
+
+# 7. API 명세
+
+# API 설계 문서
+
+## 상품 관리 서버 API
+
+### 1. 관리자 인증 (로그인)
+
+- **POST** `/auth/login`
+  - **Request Body**
+    ```json
+    {
+      "username": "admin",
+      "password": "password123"
+    }
+    ```
+  - **Response**
+    ```json
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5..."
+    }
+    ```
+
+### 2. 등록된 상품 조회
+
+- **GET** `/products`
+  - **Headers**
+    ```
+    Authorization: Bearer <token>
+    ```
+  - **Response**
+    ```json
+    [
+      {
+        "id": 1,
+        "name": "상품명",
+        "description": "상품 설명",
+        "price": 10000
+      }
+    ]
+    ```
+
+### 3. 신규 상품 등록 및 유효성 검증
+
+- **POST** `/products`
+  - **Headers**
+    ```
+    Authorization: Bearer <token>
+    ```
+  - **Request Body**
+    ```json
+    {
+      "name": "새 상품",
+      "description": "상품 설명",
+      "price": 20000
+    }
+    ```
+  - **Response**
+    ```json
+    {
+      "success": true,
+      "id": 2
+    }
+    ```
+
+### 4. 고객 문의 사항 조회
+
+- **GET** `/customer/inquiries`
+  - **Headers**
+    ```
+    Authorization: Bearer <token>
+    ```
+  - **Response**
+    ```json
+    [
+      {
+        "id": 1,
+        "customerName": "고객명",
+        "inquiry": "문의 내용"
+      }
+    ]
+    ```
+
+### 5. 전체 주문 신청 내역 조회
+
+- **GET** `/orders`
+  - **Headers**
+    ```
+    Authorization: Bearer <token>
+    ```
+  - **Response**
+    ```json
+    [
+      {
+        "orderId": 1,
+        "customerName": "고객명",
+        "orderedProducts": [
+          {
+            "productId": 1,
+            "quantity": 2
+          }
+        ],
+        "totalPrice": 20000
+      }
+    ]
+    ```
+
+## 온라인 쇼핑몰 서버 API
+
+### 1. 상품 조회
+
+- **GET** `/products`
+  - **Response**
+    ```json
+    [
+      {
+        "id": 1,
+        "name": "상품명",
+        "description": "상품 설명",
+        "price": 10000
+      }
+    ]
+    ```
+
+### 2. 상품 구매 신청 및 재고 확인
+
+- **POST** `/orders`
+  - **Headers**
+    ```
+    Authorization: Bearer <token>
+    ```
+  - **Request Body**
+    ```json
+    {
+      "productId": 1,
+      "quantity": 1
+    }
+    ```
+  - **Response**
+    ```json
+    {
+      "success": true,
+      "orderId": 1
+    }
+    ```
+
+### 3. 고객 인증 (로그인)
+
+- **POST** `/auth/login`
+  - **Request Body**
+    ```json
+    {
+      "email": "customer@example.com",
+      "password": "password123"
+    }
+    ```
+  - **Response**
+    ```json
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5..."
+    }
+    ```
+
+### 4. 회원가입 및 유효성 검증
+
+- **POST** `/auth/register`
+  - **Request Body**
+    ```json
+    {
+      "email": "new@example.com",
+      "password": "newpassword123",
+      "name": "고객명"
+    }
+    ```
+  - **Response**
+    ```json
+    {
+      "success": true
+    }
+    ```
+
+### 5. 고객 민원 등록
+
+- **POST** `/customer/inquiries`
+  - **Headers**
+    ```
+   
+
+
+
+
+
+
+
+
+
+<br>
 <br>
 <br>
 
