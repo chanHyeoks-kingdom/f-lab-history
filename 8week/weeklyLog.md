@@ -2,7 +2,10 @@
 
 ```
 [이 주의 과제]
-1. 과제 내용
+1. Git Branch 전략에 대해 설명하시오 (eg. git flow, github flow, etc)
+2. ORM (Object Relational Mapping)에 대해 설명하시오
+3. ORM/JPA의 n+1문제와 해결방법에 대해 설명하시오
+4. 스프링 JPA 영속성 컨텍스트란? (EntityManger, Entity 생명주기, 1차 캐시, 쓰기 지연, dirty checking, flush)
 ```
 
 
@@ -13,10 +16,10 @@
 ----------
 
 
-### 1. 첫 번째 질문
+### 1. Git Branch 전략에 대해 설명하시오 (eg. git flow, github flow, etc)
 
-#### (1) [질문 분기 1]
-> ##### 한 줄 설명
+#### (1) Github flow는 뭐예요?
+> ##### 깃허브에서 만든 비교적 단순한 브랜치 전략입니다. 브랜치 전략은 하나의 저장소를 여러 사람이 어떻가 하면 잘 쓸까라는 방법을 말하는데요, githubflow는 이에 대한 해결책으로 특정 작업에 대한 별도 브랜치 하나를 활용하는 방법을 제안하는 전략입니다.
 ```
 상세 설명
 
