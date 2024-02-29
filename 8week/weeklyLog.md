@@ -20,6 +20,17 @@
 
 
 #### (1) Git flow는 뭐예요?
+> ##### main, develop, feature, relaese, hotfix 브랜치를 이용해 안정적인 개발과 출시를 위해 사용하는 git 사용 전략입니다!
+```
+Git flow는 main, develop, feature, release, hotfix로 이루어진 Git을 잘 이용하기 위한 전략입니다!
+main에는 현재 버전, develop은 main을 복제한 뒤 신기능 관련된 개발을 진행하는 브랜치입니다! 여기에 직접 코드를 push하면 문제가 생겼을 때 관리가 복잡해질 수 있기 때문에 develop을 체크아웃 해서 각각의 feature 브랜치를 만들어 작업 하고 그 다음에 develop 브랜치에
+합치는 방식을 권고합니다. 이렇게 develop에서 대략적인 개발이 완료되면 출시를 위해 main에 merge해도 되지만 안전성을 위해 realease라는 임시 브랜치를 만들어서 테스트나 QA 이후에 main에 합칩니다. 단, release가 끝날 때 Develop 브랜치에도 해당 릴리즈 버전의 코드를
+합쳐주어야합니다. 만약 운영에서 발생한 긴급한 문제를 해결할 때 이런 단계는 번거로울 수 있기 때문에 메인에서 hotfix라는 브랜치를 바로 체크아웃 해 작업 후 main에 머지합니다. 이 과정 역시 develop나 현재 진행중인 release에 병합해줘야 합니다.
+
+이게 GitFlow입니다.
+```
+
+#### (1) Git flow는 뭐예요?
 > ##### 
 ```
 Git flow는 main, develop, feature, release, hotfix로 이루어진 Git을 잘 이용하기 위한 전략입니다!
