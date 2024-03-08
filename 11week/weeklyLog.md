@@ -1,6 +1,6 @@
 # WEEK 11
 
-[https://incheol-jung.gitbook.io/docs/q-and-a/spring/n+1]
+[참고](https://incheol-jung.gitbook.io/docs/q-and-a/spring/n+1)
 ```
 [이 주의 과제]
 1. API 게이트웨이 개발 초안 빨리 PR
