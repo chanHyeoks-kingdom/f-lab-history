@@ -9,7 +9,7 @@
 ```
 
 
-#### 1. API 게이트웨이 개발 초안 
+## [1. API 게이트웨이 개발 초안]
 [[#3] supermarket 프로젝트 세팅 및 API GATEWAY 서버의 스프링 시큐리티 기본 설정 및 패스워드 인코딩 구현](https://github.com/f-lab-edu/super-market/pull/6)
 
 [[#4] 멤버 엔티티 및 레포지토리 개발](https://github.com/f-lab-edu/super-market/pull/7)
@@ -22,7 +22,7 @@
 
 
 
-## [자문자답]
+## [2. 자문자답]
 
 
 ----------
