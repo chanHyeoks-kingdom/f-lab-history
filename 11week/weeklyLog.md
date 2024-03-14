@@ -3,9 +3,9 @@
 [참고](https://incheol-jung.gitbook.io/docs/q-and-a/spring/n+1)
 ```
 [이 주의 과제]
-1. API 게이트웨이 개발 초안 빨리 PR
+1. API 게이트웨이 개발 초안 빨리 PR [완료]
 2. 기술 질문 (이 주의 과제) - ORM, n + 1, 영속성 컨텍스트 (EntityManger, Entity 생명주기, 1차 캐시, 쓰기 지연, dirty checking, flush)
-3. 인성 면접 질문 복습
+3. 인성 면접 질문 복습 [ㅋㅋ 나름대로 생각은 해봄]
 ```
 
 
