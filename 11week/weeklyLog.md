@@ -18,8 +18,7 @@
 
 [[#9] API gateway에서 수행하는 인증 작업을 열거형과 어드바이스를 이용한 핸들링을 통해 체계화](https://github.com/f-lab-edu/super-market/pull/10)
 
-
-
+<br><br>
 
 
 ## [2. 자문자답]
