@@ -9,6 +9,18 @@
 ```
 
 
+#### 1. API 게이트웨이 개발 초안 
+[[#3] supermarket 프로젝트 세팅 및 API GATEWAY 서버의 스프링 시큐리티 기본 설정 및 패스워드 인코딩 구현](https://github.com/f-lab-edu/super-market/pull/6)
+
+[[#4] 멤버 엔티티 및 레포지토리 개발](https://github.com/f-lab-edu/super-market/pull/7)
+
+[[#5] API GATEWAY 서버에 멤버 등록 기능 구현 및 Valid를 이용한 DTO 검증](https://github.com/f-lab-edu/super-market/pull/8)
+
+[[#9] API gateway에서 수행하는 인증 작업을 열거형과 어드바이스를 이용한 핸들링을 통해 체계화](https://github.com/f-lab-edu/super-market/pull/10)
+
+
+
+
 
 ## [자문자답]
 
