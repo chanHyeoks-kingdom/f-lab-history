@@ -10,11 +10,39 @@ OrderDto에서 생성자 하나 둬서 Order 넘겨서 매핑해주게 하면 �
 <br>
 
 > b. ResponseEntity에서 build()를 해주는 이유 확인해보시길
--
+```
+"public static <T> ResponseEntity<T> ok(@Nullable T body)"
+
+위 첫번째 코드에서 볼 수 있듯이 인자를 넘겨준는 ok의 경우 ResponseEntity를 만들어 내려주기 때문에 별도 빌드가 필요 없습니다. 
+하지만 두 번째 코드와 같이 인자를 넘기지 않는 ok 메서드의 경우 빌더를 내려주기에 build를 통해 ResponseEntity를 생성해야 합니다. 
+
+아래 관련 API 명세 첨부합니다.
 ```
 
-- 근데 애초에 왜 빌더가 연관되어 있지? 빌더 쪽 확인 ResponseEntity 회사 코드에도 있나?
+<img width="479" alt="image" src="https://github.com/f-lab-edu/super-market/assets/68278903/2e0782ba-19e9-444b-a7ba-c159d1a36586">
+
+[그림1]. ResponseEntity를 반환하는 형태의 ok 메서드
+
+
+<img width="309" alt="image" src="https://github.com/f-lab-edu/super-market/assets/68278903/03272c23-27ae-4b43-8cc1-25fe89e9bdb9">
+
+[그림2]. Builder를 반환하는 형태의 ok 메서드
+
+
+<br>
+
+> 2. build()를 생략하는 경우
 ```
+"incompatible types: BodyBuilder cannot be converted to ResponseEntity<Void>"
+
+컴파일 이전, 컴파일 시점등에서 위 와 같은 에러가 발생합니다.
+```
+
+<img width="683" alt="image" src="https://github.com/f-lab-edu/super-market/assets/68278903/90b3b490-7fef-43f2-af08-3ff4ee075b19">
+
+[그림3]. 반환 타입이 달라 문제 발생
+
+
 
 
 <br>
