@@ -55,10 +55,68 @@ Runnable, Running, Terminate가 있고
 
 ## 4. Java의 Atomic, Volatile, Synchronized 각각의 차이에 대해 설명하시오
 
-> a. 요약
--
+> a. synchronized
+- Synchronized는 메소드나 블록을 동기화하여 한 시점에 하나의 스레드만 접근할 수 있도록 합니다.
+```
+public class Counter {
+    private int count = 0;
+
+    public synchronized void increment() {
+        count++;
+    }
+
+    public synchronized int getCount() {
+        return count;
+    }
+}
 ```
 
+> a. synchronized
+- Synchronized는 메소드나 블록을 동기화하여 한 시점에 하나의 스레드만 접근할 수 있도록 합니다.
+```
+public class Counter {
+    private int count = 0;
+
+    public synchronized void increment() {
+        count++;
+    }
+
+    public synchronized int getCount() {
+        return count;
+    }
+}
+
+장점:
+간단하고 이해하기 쉽습니다.
+객체나 메소드 전체를 동기화할 수 있습니다.
+
+단점:
+성능 저하가 발생할 수 있습니다. 큰 오버헤드를 발생시키며 스레드 대기 시간이 길어질 수 있습니다.
+데드락의 위험이 있습니다.
+```
+
+> a. synchronized
+- Synchronized는 메소드나 블록을 동기화하여 한 시점에 하나의 스레드만 접근할 수 있도록 합니다.
+```
+public class Counter {
+    private int count = 0;
+
+    public synchronized void increment() {
+        count++;
+    }
+
+    public synchronized int getCount() {
+        return count;
+    }
+}
+
+장점:
+간단하고 이해하기 쉽습니다.
+객체나 메소드 전체를 동기화할 수 있습니다.
+
+단점:
+성능 저하가 발생할 수 있습니다. 큰 오버헤드를 발생시키며 스레드 대기 시간이 길어질 수 있습니다.
+데드락의 위험이 있습니다.
 ```
 
 <br>
