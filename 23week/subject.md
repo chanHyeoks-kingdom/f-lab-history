@@ -71,52 +71,56 @@ public class Counter {
 }
 ```
 
-> a. synchronized
-- Synchronized는 메소드나 블록을 동기화하여 한 시점에 하나의 스레드만 접근할 수 있도록 합니다.
+> b. volatile
+- Volatile 키워드는 변수를 메인 메모리에 저장하게 하여 캐시가 아닌 메인 메모리에서 직접 읽고 쓰게 합니다. 이는 모든 스레드에 변수의 최신 값을 보장합니다.
 ```
-public class Counter {
-    private int count = 0;
+public class Flag {
+    private volatile boolean flag = true;
 
-    public synchronized void increment() {
-        count++;
+    public void toggle() {
+        flag = !flag;
     }
 
-    public synchronized int getCount() {
-        return count;
+    public boolean getFlag() {
+        return flag;
     }
 }
 
 장점:
-간단하고 이해하기 쉽습니다.
-객체나 메소드 전체를 동기화할 수 있습니다.
+간단한 상황에서 가볍고 빠른 동기화를 제공합니다.
+변수의 가시성을 보장하며 쉬운 사용법을 가집니다.
 
 단점:
-성능 저하가 발생할 수 있습니다. 큰 오버헤드를 발생시키며 스레드 대기 시간이 길어질 수 있습니다.
-데드락의 위험이 있습니다.
+복잡한 상태나 작업을 동기화하기에는 부적합합니다.
+volatile은 원자성을 보장하지 않습니다.
 ```
 
-> a. synchronized
-- Synchronized는 메소드나 블록을 동기화하여 한 시점에 하나의 스레드만 접근할 수 있도록 합니다.
+> c. Atomic
+- Atomic 클래스는 java.util.concurrent.atomic 패키지에 속해 있으며 lock-free 프로그래밍을 가능하게 합니다.
+- 단일 변수에 대한 원자적 연산을 지원하여 멀티 스레딩에서의 데이터 무결성을 보장합니다.
 ```
-public class Counter {
-    private int count = 0;
+import java.util.concurrent.atomic.AtomicInteger;
 
-    public synchronized void increment() {
-        count++;
+public class SafeCounter {
+    private AtomicInteger count = new AtomicInteger(0);
+
+    public void increment() {
+        count.incrementAndGet();
     }
 
-    public synchronized int getCount() {
-        return count;
+    public int getCount() {
+        return count.get();
     }
 }
 
+
 장점:
-간단하고 이해하기 쉽습니다.
-객체나 메소드 전체를 동기화할 수 있습니다.
+성능 향상을 제공합니다. Lock을 사용하지 않으므로 오버헤드가 적습니다.
+코드가 간결하며 사용하기 쉽습니다.
 
 단점:
-성능 저하가 발생할 수 있습니다. 큰 오버헤드를 발생시키며 스레드 대기 시간이 길어질 수 있습니다.
-데드락의 위험이 있습니다.
+복잡한 연산을 수행할 때는 적합하지 않을 수 있습니다.
+주로 단일 변수에 대한 간단한 연산에 적합합니다.
 ```
 
 <br>
