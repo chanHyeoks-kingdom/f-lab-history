@@ -23,6 +23,8 @@ Runnable, Running, Terminate가 있고
 - 특정 스레드의 대기상태를 강제로 해제하기 위한 intruptted()등의 액션 등이 있다.
 - 자원을 빠르게 해제해 Blocked 상태의 스레드를 빨리 Runnable로 바뀌기 위한 free 액션등이 있다.
 
+> c. 
+
 <br>
 
 ## 2. 웹브라우저에 url 입력 후 일어나는 일들에 대해 설명하시오.
