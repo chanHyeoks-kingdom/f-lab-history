@@ -39,7 +39,6 @@ Runnable, Running, Terminate가 있고
 - 요청 메시지를 HTTP 리퀘스트로 만들어 전송한다.
 - HTTP 응답을 받는다.
 - 화면에서 해당 페이지를 랜더링한다.
-
 ```
 
 <br>
