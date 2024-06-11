@@ -9,11 +9,19 @@
 
 ## 1. Java Thread 의 생명 주기에 대해 설명하시오
 
-> a. 요약
--
+> a. 6가지 상태
+- Java Thread는 운영체제의 커널 쓰레드의 상태를 연동하기 위해 존재하는 구분이다.
+```
+Runnable, Running, Terminate가 있고
+대기 상태 전환을 위한 Wait, Time Wait 상태가 있다.
+이미 Lock을 선점당한 자원에 접근시 전환되는 Blocked 상태도 존재한다.
 ```
 
-```
+> b. 각 상태로 전환되기 위해 전제되어야 하는 것들
+- 맨 처음 Tread 객체를 Runnable 상태로 만들기 위한 start() 메서드들을 활용할 수 있다.
+- Waiting 상태로 가기 위한 sleep, join, wait등의 키워드들이 있다.
+- 특정 스레드의 대기상태를 강제로 해제하기 위한 intruptted()등의 액션 등이 있다.
+- 자원을 빠르게 해제해 Blocked 상태의 스레드를 빨리 Runnable로 바뀌기 위한 free 액션등이 있다.
 
 <br>
 
