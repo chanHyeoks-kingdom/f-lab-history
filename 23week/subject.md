@@ -66,8 +66,17 @@ VIEW는 결국 SELECT 해주는 함수 정도의 개념이기 때문에 별도 �
 ```
 
 > d. VIEW EXAMPLE
+- 뷰를 생성하는 키워드는 CREATE VIEW를 사용하고 뷰 이용시엔 그냥 테이블 조회처럼 사용하면 된다.
 ```
-
+CREATE VIEW CustomerOrders AS
+SELECT c.CustomerID, c.Name, o.OrderID, o.OrderDate, o.Amount
+FROM customers c
+JOIN orders o ON c.CustomerID = o.CustomerID;
+```
+```
+SELECT Name, OrderID, OrderDate, Amount
+FROM CustomerOrders
+WHERE CustomerID = '123';
 ```
 
 
