@@ -58,6 +58,13 @@ Runnable, Running, Terminate가 있고
 - 물리적인 인덱스를 가진 물질화된 VIEW 생성
 ```
 
+> c. VIEW 사용시 주의점
+- VIEW는 내부적으로 SELECT하는 대상이 되는 테이블에 실시간으로 의존하고 있다.
+```
+VIEW는 결국 SELECT 해주는 함수 정도의 개념이기 때문에 별도 테이블이 생성되는게 아니라 매번 해당 SELECT
+문을 실행시켜주는 것이어서 FROM의 대상이 되는 테이블이 변경되는 경우 이에 맞춰 VIEW 코드를 변경해줘야 한다.
+```
+
 <br>
 
 ## 4. Java의 Atomic, Volatile, Synchronized 각각의 차이에 대해 설명하시오
