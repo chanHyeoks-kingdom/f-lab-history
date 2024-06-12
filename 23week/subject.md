@@ -65,6 +65,27 @@ VIEW는 결국 SELECT 해주는 함수 정도의 개념이기 때문에 별도 �
 문을 실행시켜주는 것이어서 FROM의 대상이 되는 테이블이 변경되는 경우 이에 맞춰 VIEW 코드를 변경해줘야 한다.
 ```
 
+> d. VIEW EXAMPLE
+```
+
+```
+
+
+> e. VIEW에서 권한을 다루는 방법
+- VIEW에서 특정 사용자에게 권한을 주고 뺐는 방법은 GRANT, REVOKE 키워드를 사용한다.
+```
+-- 'username' 사용자에게 'EmployeeView' 뷰의 SELECT 권한을 부여
+GRANT SELECT ON EmployeeView TO username;
+```
+```
+-- 'username' 사용자의 'EmployeeView' 뷰에 대한 SELECT 권한을 제거
+REVOKE SELECT ON EmployeeView FROM username;
+```
+```
+-- 'username' 사용자에게 'EmployeeView' 뷰의 SELECT, INSERT, UPDATE 권한을 부여
+GRANT SELECT, INSERT, UPDATE ON EmployeeView TO username;
+```
+
 <br>
 
 ## 4. Java의 Atomic, Volatile, Synchronized 각각의 차이에 대해 설명하시오
