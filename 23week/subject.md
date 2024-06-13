@@ -99,7 +99,7 @@ GRANT SELECT, INSERT, UPDATE ON EmployeeView TO username;
 
 ## 4. Java의 Atomic, Volatile, Synchronized 각각의 차이에 대해 설명하시오
 
-> a. synchronized
+> a. synchronized 사용패턴 (1): 메소드 동기화 
 - Synchronized는 메소드나 블록을 동기화하여 한 시점에 하나의 스레드만 접근할 수 있도록 합니다.
 ```
 public class Counter {
