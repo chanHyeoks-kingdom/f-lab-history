@@ -134,7 +134,8 @@ public class Counter {
     }
 }
 ```
-
+- cache 같은 객체에 syncrhonized를 걸어두고 해당 블록 안에 동시성을 유지시키고 싶은 로직을 두는 방식이다.
+- 만약 cache 자체의 동시성 문제를 핸들링 하고 싶다면 이와 관련된 모든 작업에 SYNCRHONIZED를 걸어줘야 한다는 한계가 있다.
 
 > c. synchronized 사용패턴 (3): 클래스 레벨 동기화 
 ```
