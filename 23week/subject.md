@@ -98,9 +98,10 @@ GRANT SELECT, INSERT, UPDATE ON EmployeeView TO username;
 <br>
 
 ## 4. Java의 Atomic, Volatile, Synchronized 각각의 차이에 대해 설명하시오
+- Synchronized는 메소드나 블록을 동기화하여 한 시점에 하나의 스레드만 접근할 수 있도록 합니다.
+
 
 > a. synchronized 사용패턴 (1): 메소드 동기화 
-- Synchronized는 메소드나 블록을 동기화하여 한 시점에 하나의 스레드만 접근할 수 있도록 합니다.
 ```
 public class Counter {
     private int count = 0;
@@ -114,6 +115,54 @@ public class Counter {
     }
 }
 ```
+
+> b. synchronized 사용패턴 (2): 블록 동기화 
+```
+public class Counter {
+    private Map<String, String> cache = new HashMap<>();
+
+    public void updateCache(String key, String value) {
+        synchronized (cache) {
+            cache.put(key, value);
+        }
+    }
+
+    public String getValue(String key) {
+        synchronized (cache) {
+            return cache.get(key);
+        }
+    }
+}
+```
+
+
+> c. synchronized 사용패턴 (3): 클래스 레벨 동기화 
+```
+public class Service {
+    private static int count = 0;
+
+    public static synchronized void increment() {
+        count++;
+    }
+}
+```
+
+
+> d.synchronized 사용패턴 (4): 정밀한 객체 동기화
+```
+public class CustomLock {
+    private final Object lock = new Object();
+    private int data = 0;
+
+    public void increment() {
+        synchronized (lock) {
+            data++;
+        }
+    }
+}
+```
+
+
 
 > b. volatile
 - Volatile 키워드는 변수를 메인 메모리에 저장하게 하여 캐시가 아닌 메인 메모리에서 직접 읽고 쓰게 합니다. 이는 모든 스레드에 변수의 최신 값을 보장합니다.
