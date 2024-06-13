@@ -147,7 +147,8 @@ public class Service {
     }
 }
 ```
-
+- 모든 Service 객체들에서 increment를 접근할 때 동기화를 거치게된다.
+- 마찬가지로 count는 synchronized와 관계 없는 곳에선 열려있는 상태여서 동시성 문제를 조심해야한다.
 
 > d.synchronized 사용패턴 (4): 정밀한 객체 동기화
 ```
