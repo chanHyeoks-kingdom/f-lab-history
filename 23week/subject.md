@@ -169,6 +169,7 @@ public class CustomLock {
 
 > b. volatile
 - Volatile 키워드는 변수를 메인 메모리에 저장하게 하여 캐시가 아닌 메인 메모리에서 직접 읽고 쓰게 합니다. 이는 모든 스레드에 변수의 최신 값을 보장합니다.
+- 사실 원자성을 보장하는 건 아니고 가시성을 보장하는 정책입니다.
 ```
 public class Flag {
     private volatile boolean flag = true;
