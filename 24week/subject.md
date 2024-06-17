@@ -57,25 +57,12 @@ import org.apache.logging.log4j.Logger;
 private Logger logger = LogManager.getLogger(log.class);
 logger.info("로깅!");
 ```
+-> 정확한 인터셉터의 정의 이해하기
 
+> b. 사실 필터에서도 빈을 쓸 수 있습니다.
 
-
-
-
-
-A6. 필터에서 빈을 못쓴다?
-
-
-
-근데 사실 필터에서는 스프링 빈 못쓴다는거 뻥입니다ㅋㅋ
-
-원랜 못썼는데요,
-
-버전업 되면서 DelegationProxyFilter가 나오면서 빈 등록 가능합니다.
-
-그래서 필터를 인터셉터처럼 쓰기가 가능은 한데요,
-
-되도록이면 기존에 필터의 목적에 맞게 구현하는게 관례입니다.
+- 버전업 되면서 DelegationProxyFilter가 나오면서 빈 등록 가능합니다.
+- 따라서 필터를 인터셉터처럼 쓰기가 가능 하지만 되도록이면 기존에 필터의 목적에 맞게 구현하는게 관례입니다.
 
 (spring context안에서 놀다가 web context 밖에 나왔다가 다시 들어가는게 아마 성능상으로도 별로일 거라고 추측하고 있습니다..)
 
