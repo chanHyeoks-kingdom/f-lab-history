@@ -24,7 +24,72 @@
 <img width="767" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/3cb9a9df-aa25-480d-a8ab-bfedfe1cbac4">
 
 ```
-주석
+보다싶이 필터는 Spring context 밖에 있어서 Bean을 못씁니다.
+그래서 XSS, CORS정책 확인, jwt 토큰 확인, utf-8 등록 등 ..빈이 필요 없는 검증등을 수행합니다.
+```
+
+```
+# 정리할 내용 아래
+
+A5. Interceptor
+
+인터셉터는 뭐하는 놈일까요?
+
+
+
+필터 다 거르고 spring context안에 들어왔죠?
+
+그럼 http request가 컨트롤러로 보내지고, 서비스로 보내지고 등등 해서 처리되겠죠?
+
+이 때, 컨트롤러에서 회원가입 메서드에서 파라미터로 UserVO를 받는데, 필드값이 username, password인데,
+
+client에서 POST요청 보낼 때
+
+{
+	usermame: xxx,
+	pazzword: xxx
+}
+
+이런식으로 필드 이름을 오타내서 보냈다고 하면, 이걸 컨트롤러 단에서 파라미터로 받을 때
+
+@Valid UserVO 로 확인한 후, 필드 값이 이상하면 Exception을 던지는데요,
+
+여기서 @Valid나, 컨트롤러 안에서 터지는 Exception을 잡아서 Exception만 전용으로 던지는 @ControllerAdvice 이게 붙은 핸들러들을 인터셉터라고 보시면 됩니다.
+
+
+
+이 외에도 서비스 단에서 비지니스 로직 처리에 걸리는 시간 앞 뒤로 해서 측정하는거나,
+
+스프링에서 로깅 찍을 때,
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+private Logger logger = LogManager.getLogger(log.class);
+logger.info("로깅!");
+
+이러는 애들도 일종의 인터셉터라고 보시면 됩니다.
+
+
+
+
+
+A6. 필터에서 빈을 못쓴다?
+
+
+
+근데 사실 필터에서는 스프링 빈 못쓴다는거 뻥입니다ㅋㅋ
+
+원랜 못썼는데요,
+
+버전업 되면서 DelegationProxyFilter가 나오면서 빈 등록 가능합니다.
+
+그래서 필터를 인터셉터처럼 쓰기가 가능은 한데요,
+
+되도록이면 기존에 필터의 목적에 맞게 구현하는게 관례입니다.
+
+(spring context안에서 놀다가 web context 밖에 나왔다가 다시 들어가는게 아마 성능상으로도 별로일 거라고 추측하고 있습니다..)
+
 ```
 
 
