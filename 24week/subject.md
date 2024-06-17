@@ -37,28 +37,27 @@
 그래서 `사용 예시`를 보면 ..
 - UserVO라는 필드값이 username, password인 POST 요청의 JSON을 아래와 같이 보냈을 때
 
-
+```
 {
 	usermame: xxx,
 	pazzword: xxx
 }
+```
 
-@Valid UserVO 로 확인한 후, 필드 값이 이상하면 Exception을 던질텐데
-이렇게 컨트롤러 안에서 터지는 Exception을 잡아서 Exception만 전용으로 던지는 @ControllerAdvice 이게 붙은 핸들러들을 인터셉터라고 보시면 됩니다.
+`@Valid UserVO 로 확인`한 후, 필드 값이 이상하면 `Exception`을 던질텐데
+이렇게 `컨트롤러 안에서 터지는 Exception을 잡는 @ControllerAdvice가 적용된 핸들러들을 인터셉터`라고 보시면 됩니다.
 
 
 
-이 외에도 서비스 단에서 비지니스 로직 처리에 걸리는 시간 앞 뒤로 해서 측정하는거나,
-
-스프링에서 로깅 찍을 때,
-
+- 이 외에도 서비스 단에서의 비지니스 로직 처리 시간 측정이나, 스프링에서의 로깅 과정 등도 일종의 인터셉터라고 보시면 됩니다.
+```
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 private Logger logger = LogManager.getLogger(log.class);
 logger.info("로깅!");
+```
 
-이러는 애들도 일종의 인터셉터라고 보시면 됩니다.
 
 
 
