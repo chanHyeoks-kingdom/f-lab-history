@@ -19,42 +19,32 @@
 ## 1. 스프링 필터와 인터셉터의 차이점을 설명하시오.
 > a. 똑같이 AOP라는 컨셉의 구현체고 실행 시점의 차이가 있습니다.
 - 필터는 Web Container라고 Spring Context 밖에 서블릿 컨테이너 안에 들어가 있습니다.
-- 인터셉터는 필터를 지나 스프링 MVC의 디스패처 서블릿과 컨트롤러 사이에 존재합니다.
 <img width="764" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/f2a7ed78-ad24-4f86-99d2-2099ea5433f1">
-<img width="767" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/3cb9a9df-aa25-480d-a8ab-bfedfe1cbac4">
 
 ```
 보다싶이 필터는 Spring context 밖에 있어서 Bean을 못씁니다.
 그래서 XSS, CORS정책 확인, jwt 토큰 확인, utf-8 등록 등 ..빈이 필요 없는 검증등을 수행합니다.
 ```
 
+- 인터셉터는 필터를 지나 스프링 MVC의 디스패처 서블릿과 컨트롤러 사이에 존재합니다.
+<img width="767" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/3cb9a9df-aa25-480d-a8ab-bfedfe1cbac4">
+
 ```
-# 정리할 내용 아래
+반면 인터셉터는 spring context 안에 들어있죠?
+결국 dispatcher servlet을 넘어서 컨트롤러로 들어가기 전에 인터셉터를 타게 됩니다.
+```
 
-A5. Interceptor
+그래서 `사용 예시`를 보면 ..
+- UserVO라는 필드값이 username, password인 POST 요청의 JSON을 아래와 같이 보냈을 때
 
-인터셉터는 뭐하는 놈일까요?
-
-
-
-필터 다 거르고 spring context안에 들어왔죠?
-
-그럼 http request가 컨트롤러로 보내지고, 서비스로 보내지고 등등 해서 처리되겠죠?
-
-이 때, 컨트롤러에서 회원가입 메서드에서 파라미터로 UserVO를 받는데, 필드값이 username, password인데,
-
-client에서 POST요청 보낼 때
 
 {
 	usermame: xxx,
 	pazzword: xxx
 }
 
-이런식으로 필드 이름을 오타내서 보냈다고 하면, 이걸 컨트롤러 단에서 파라미터로 받을 때
-
-@Valid UserVO 로 확인한 후, 필드 값이 이상하면 Exception을 던지는데요,
-
-여기서 @Valid나, 컨트롤러 안에서 터지는 Exception을 잡아서 Exception만 전용으로 던지는 @ControllerAdvice 이게 붙은 핸들러들을 인터셉터라고 보시면 됩니다.
+@Valid UserVO 로 확인한 후, 필드 값이 이상하면 Exception을 던질텐데
+이렇게 컨트롤러 안에서 터지는 Exception을 잡아서 Exception만 전용으로 던지는 @ControllerAdvice 이게 붙은 핸들러들을 인터셉터라고 보시면 됩니다.
 
 
 
