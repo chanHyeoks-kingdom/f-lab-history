@@ -17,9 +17,12 @@
 ```
 
 ## 1. 스프링 필터와 인터셉터의 차이점을 설명하시오.
-> a. 간략 답변
-- 요약1
-- 요약2
+> a. 똑같이 AOP라는 컨셉의 구현체고 실행 시점의 차이가 있습니다.
+- 필터는 Web Container라고 Spring Context 밖에 서블릿 컨테이너 안에 들어가 있습니다.
+- 인터셉터는 필터를 지나 스프링 MVC의 디스패처 서블릿과 컨트롤러 사이에 존재합니다.
+<img width="764" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/f2a7ed78-ad24-4f86-99d2-2099ea5433f1">
+<img width="767" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/3cb9a9df-aa25-480d-a8ab-bfedfe1cbac4">
+
 ```
 주석
 ```
