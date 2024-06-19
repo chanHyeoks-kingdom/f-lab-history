@@ -255,7 +255,8 @@ public class TransactionExample {
 	- 부모 있으면 중첩
 	- 없으면 생성
 
-![[Pasted image 20240619221754.png]]
+<img width="694" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/2681d190-353a-4f47-8da7-f49f478c0a33">
+
 
 
 > e. 각 propagation 정책이 필요한 구체적인 상황들 ..
