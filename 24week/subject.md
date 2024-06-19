@@ -17,55 +17,135 @@
 ```
 
 ## 1. 스프링 필터와 인터셉터의 차이점을 설명하시오.
-> a. 똑같이 AOP라는 컨셉의 구현체고 실행 시점의 차이가 있습니다.
+> a. #필터 와 #인터셉터 는 공통 관심사를 묶어 중복을 줄이기 위해 등장한 #AOP컨셉 의 구현체들 입니다.
+- 같은 목적을 가졌지만 어디서 이런 처리를 수행하느냐의 차이가 있습니다.
+- 두 구현체의 실행 시점의 차이에 대한 내용은 아래 기술합니다.
+
+> b. 스프링 필터와 인터셉터의 실행 시점 차이
 - 필터는 Web Container라고 Spring Context 밖에 서블릿 컨테이너 안에 들어가 있습니다.
 <img width="764" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/f2a7ed78-ad24-4f86-99d2-2099ea5433f1">
 
 ```
-보다싶이 필터는 Spring context 밖에 있어서 Bean을 못씁니다.
-그래서 XSS, CORS정책 확인, jwt 토큰 확인, utf-8 등록 등 ..빈이 필요 없는 검증등을 수행합니다.
+따라서 필터는 Spring context 밖에 있어 주로 Bean을 사용하지 않는 전처리를 수행합니다.
+예컨대 XSS, CORS정책 확인, jwt 토큰 확인, utf-8 등록 등 ..빈이 필요 없는 검증등을 수행합니다.
 ```
 
 - 인터셉터는 필터를 지나 스프링 MVC의 디스패처 서블릿과 컨트롤러 사이에 존재합니다.
 <img width="767" alt="image" src="https://github.com/chanHyeoks-kingdom/f-lab-history/assets/68278903/3cb9a9df-aa25-480d-a8ab-bfedfe1cbac4">
+```
+반면 인터셉터는 spring context 안에 들어있습니다.
+그래서 dispatcher servlet을 넘어서 컨트롤러로 들어가기 전에 인터셉터를 타게 됩니다.
+```
 
-```
-반면 인터셉터는 spring context 안에 들어있죠?
-결국 dispatcher servlet을 넘어서 컨트롤러로 들어가기 전에 인터셉터를 타게 됩니다.
-```
 
 그래서 `사용 예시`를 보면 ..
-- UserVO라는 필드값이 username, password인 POST 요청의 JSON을 아래와 같이 보냈을 때
-
+- `필터`의 예시: UTF-8 인코딩
 ```
-{
-	usermame: xxx,
-	pazzword: xxx
+public class UTF8인코딩필터 implements Filter {
+
+    @Override
+    public void init(FilterConfig 필터구성) throws ServletException {
+        // 필터 초기화 로직 (필요 시)
+    }
+
+    @Override
+    public void doFilter(ServletRequest 요청, ServletResponse 응답, FilterChain 체인) throws IOException, ServletException {
+        요청.setCharacterEncoding("UTF-8");
+        응답.setCharacterEncoding("UTF-8");
+        체인.doFilter(요청, 응답); // 다음 필터 또는 서블릿으로 요청 전달
+    }
+
+    @Override
+    public void destroy() {
+        // 필터 종료 로직 (필요 시)
+    }
 }
 ```
 
-`@Valid UserVO 로 확인`한 후, 필드 값이 이상하면 `Exception`을 던질텐데
-이렇게 `컨트롤러 안에서 터지는 Exception을 잡는 @ControllerAdvice가 적용된 핸들러들을 인터셉터`라고 보시면 됩니다.
-
-
-
-- 이 외에도 서비스 단에서의 비지니스 로직 처리 시간 측정이나, 스프링에서의 로깅 과정 등도 일종의 인터셉터라고 보시면 됩니다.
 ```
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+@Configuration
+public class 필터구성 {
 
-private Logger logger = LogManager.getLogger(log.class);
-logger.info("로깅!");
+    @Bean
+    public FilterRegistrationBean<UTF8인코딩필터> utf8인코딩필터등록() {
+        FilterRegistrationBean<UTF8인코딩필터> 등록 = new FilterRegistrationBean<>();
+        등록.setFilter(new UTF8인코딩필터());
+        등록.addUrlPatterns("/*");
+        return 등록;
+    }
+}
 ```
--> 정확한 인터셉터의 정의 이해하기
 
-> b. 사실 필터에서도 빈을 쓸 수 있습니다.
 
-- 버전업 되면서 DelegationProxyFilter가 나오면서 빈 등록 가능합니다.
+- `인터셉터`의 예시: 시간 측정
+```
+public class 요청시간측정인터셉터 implements HandlerInterceptor {
+
+    @Override
+    public boolean preHandle(HttpServletRequest 요청, HttpServletResponse 응답, Object 핸들러) throws Exception {
+        요청.setAttribute("시작시간", System.currentTimeMillis());
+        return true; // true를 반환해야 요청이 컨트롤러로 전달됨
+    }
+
+    @Override
+    public void postHandle(HttpServletRequest 요청, HttpServletResponse 응답, Object 핸들러, ModelAndView 모델앤뷰) throws Exception {
+        long 시작시간 = (Long) 요청.getAttribute("시작시간");
+        long 종료시간 = System.currentTimeMillis();
+        long 처리시간 = 종료시간 - 시작시간;
+        System.out.println("요청 처리 시간: " + 처리시간 + "ms");
+    }
+
+    @Override
+    public void afterCompletion(HttpServletRequest 요청, HttpServletResponse 응답, Object 핸들러, Exception 예외) throws Exception {
+        // 요청 완료 후 추가 작업 (필요 시)
+    }
+}
+```
+
+```
+@Configuration
+public class 인터셉터구성 implements WebMvcConfigurer {
+
+    @Autowired
+    private 요청시간측정인터셉터 요청시간측정인터셉터;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry 레지스트리) {
+        레지스트리.addInterceptor(요청시간측정인터셉터)
+                  .addPathPatterns("/**"); // 모든 경로에 대해 인터셉터 적용
+    }
+}
+```
+
+> c. 필터에서 Reqeust를 래핑 하는 처리등도 진행하면 좋습니다.
+
+```
+public class HyeokSystemFilter implements Filter {
+    
+@Override
+public void init(FilterConfig filterConfig) throws ServletException {}
+
+@Override
+public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, servletException {
+    HyeokSystemRequestWrapper(HttpServletReqeust) request);
+    .. 
+	try { 
+		RequestContext.initialize((HttpServletRequest) hyeokSysteRequest, (HttpServletResponse) response); 
+	chain.doFilter(HyeokSystemRequest, response);
+```
+
+- 위 코드에서 왜 굳이 `HyeokSystemRequestWrapper`를 이용해 이용해 ServletRequest를 래핑해서 넘겨줄까?
+- 저 ServletRequest의 경우는 스트림 형식이라 한번 읽으면 재사용이 안되서 그렇다.
+- 그래서 저렇게 재사용 가능토록 처리해주는 역할을 Filter에서 적용해주면 좋다.
+
+
+> d. 사실 필터에서도 빈을 쓸 수 있습니다.
+
+- 버전업 되면서 #DelegationProxyFilter 가 나오면서 빈 등록 가능합니다.
 - 따라서 필터를 인터셉터처럼 쓰기가 가능 하지만 되도록이면 기존에 필터의 목적에 맞게 구현하는게 관례입니다.
 
-#### (spring context안에서 놀다가 web context 밖에 나왔다가 다시 들어가는게 아마 성능상으로도 별로일 거라는 추측이 있다.)
 
+#이론학습
 
 
 ## 2. 스프링 @Transactional 애노테이션의 동작원리와 전파 속성들에 대해 설명하시오.
