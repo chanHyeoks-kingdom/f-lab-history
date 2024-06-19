@@ -149,12 +149,136 @@ public void doFilter(ServletRequest request, ServletResponse response, FilterCha
 
 
 ## 2. 스프링 @Transactional 애노테이션의 동작원리와 전파 속성들에 대해 설명하시오.
-> a. 간략 답변
-- 요약1
-- 요약2
+
+
+> a. 스프링 @Transactional은 애노테이션을 통해 말만(선언) 해두면 알아서 트랜잭션을 만들어줍니다.
+- 저희가 JDBC 커넥션 객체를 생성하고 `autoCommit을 끈 뒤`에 `명시적으로 커밋토록` 하게 하고
+- 롤백에 대한 처리를 해주면 ..
+- 이게 하나의 트랜잭션이 됩니다.
 ```
-주석
+public class TransactionExample {
+    public static void main(String[] args) {
+        Connection 연결 = null;
+        PreparedStatement 조회명령문 = null;
+        PreparedStatement 업데이트명령문 = null;
+        ResultSet 결과셋 = null;
+
+        try {
+            연결 = DriverManager.getConnection("jdbc:yourDatabaseURL", "username", "password");
+            연결.setAutoCommit(false);  // 자동 커밋을 끕니다.
+
+            // 데이터 조회
+            String 조회SQL = "SELECT 컬럼명 FROM 테이블명 WHERE 조건";
+            조회명령문 = 연결.prepareStatement(조회SQL);
+            결과셋 = 조회명령문.executeQuery();
+
+            // 조회 결과에 따라 업데이트 수행
+            if (결과셋.next()) {
+                String 업데이트값 = 결과셋.getString("컬럼명");
+                // 업데이트할 새 값 계산 로직 등...
+
+                String 업데이트SQL = "UPDATE 테이블명 SET 컬럼명 = ? WHERE 조건";
+                업데이트명령문 = 연결.prepareStatement(업데이트SQL);
+                업데이트명령문.setString(1, 업데이트값);
+                업데이트명령문.executeUpdate();
+            }
+
+            연결.commit();  // 명시적으로 커밋을 수행합니다.
+
+        } catch (SQLException e) {
+            try {
+                if (연결 != null) 연결.rollback();  // 오류가 발생하면 롤백을 수행합니다.
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            try {
+                if (결과셋 != null) 결과셋.close();
+                if (조회명령문 != null) 조회명령문.close();
+                if (업데이트명령문 != null) 업데이트명령문.close();
+                if (연결 != null) 연결.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+}
+
 ```
+
+
+위 코드처럼 Connection 객체를 생성하고 commit을 하기 까지의 과정이 하나의 트랜잭션이 됩니다. 우리는 이 처럼 트랜잭션의 시작과 끝을 `트랜잭션의 경계`라고 표현합니다.
+
+
+> b. 각 트랜잭션의 경계가 중첩되는 경우에 대한 처리 (propagation)
+- 각 트랜잭션의 경계가 중첩되는 경우 어떻게 트랜잭션을 유지할 건지에 대한 옵션이 propagation이다. 
+- 예컨대 아래와 같다.
+	- required: 두 개의 `논리 트랜잭션`을 묶어 하나의 `물리 트랜잭션`으로 삼는다.
+	- requiresNew: `새로운 물리 트랜잭션`을 만들어 `여러개의 물리 트랜잭션`을 운용토록 하는 것
+
+> c. 논리 트랜잭션? 물리 트랜잭션 ..?
+- 논리 트랜잭션이란 트랜잭션 매니저나 스프링에 의해 관리되는 논리적 단위의 트랜잭션을 말한다.
+- 물리 트랜잭션은 DB Connection 하나당 하나씩 생성된다 (?)
+	- 그럼 RequiresNew의 경우 2개 생성되는 건 DB 커넥션이 1개가 더 늘어난다는 것?
+
+> d. 각 propagation 정책에 대해서 ..
+
+(1) Required 계열 (수더분한 스타일)
+- Required: 정~말 부모가 필요해서
+	- * 부모가 있으면 참여
+	- 없으면 새로 만들어
+
+- Support: 적당히 지원 정도만 필요해서
+	- * 부모가 있으면 참여
+	- 없어도 그냥 진행
+
+- Mandatory: 필요하다 못해 없으면 난리나서
+	- * 부모가 있으면 참여
+	- 없으면 예외 발생 (IllegalTransactionStateException)
+
+
+(2) Requires_New 계열 (부모 있으면 삐딱선)
+- Requires_New: 필요는 한데 .. 그냥 새 부모가 필요해
+		- 부모가 있어도 새 트랜잭션 만들고
+		- 없으면 당연히 새 트랜재션 만들고
+
+-  Not_Supported: 부모 지원 필요 없고 혼자서도 잘해요
+		- 부모가 있어도 새 트랜잭션 만들고
+		- 없으면 그냥 진행
+
+-  NEVER: 부모 절대 있으면 안돼!!!
+		- 부모 있으면 에러
+		- 없어도 안만들고 걍 고
+
+-  NESTED: 부모고 뭐고 중첩해 걍
+		- 부모 있으면 중첩
+		- 없으면 생성
+
+![[Pasted image 20240619221754.png]]
+
+
+> e. 각 propagation 정책이 필요한 구체적인 상황들 ..
+
+- (1) Required:
+	- 주문 프로세스라는 부모 트랜잭션에서 상품 재고 감소, 결제등을 하나의 트랜잭션으로 합칠 때
+
+- (2) Supported:
+	- 부모 트랜잭션과의 합류가 선택적으로 이루어져야 하는 경우
+	- 로깅과 같이 트랜잭션이 있을 경우 같이 작성되야 하지만 없어도 그런대로 진행되야 할 경우 적용
+
+- (3) MANDATORY
+	- 계좌 이체의 경우 반드시 기존 트랜잭션의 일부로서 수행되야 한다는 요구사항이 있는 경우
+	- 계좌 이체만 누가 똑 빼서 실행치 않도록 ..
+
+- (4) REQUIRES_NEW
+	- 메시지 큐에 메시지를 보내는 경우 처럼 기존 트랜잭션과 상관 없이 독립적으로 실행돼야 하는 작업
+	- 주문 처리중 오류가 발생하더라도 사용자에게 알림을 보내야 하는 트랜잭션은 반드시 실행되야함.
+
+- (5) NEVER
+	- 트랜잭션을 사용하면 안되는 것들을 다룰 때 사용
+	- 주문 처리 중 여러 상품의 재고를 감소시키는 작업이 있을 때, 일부 상품 처리에서 실패해도 다른 상품 처리에 영향을 주지 않고 롤백할 수 있습니다. `NESTED`를 사용하면, 메인 트랜잭션 내에서 중첩 트랜잭션을 생성하여, 필요할 때만 해당 부분을 롤백할 수 있습니다.
+
 
 
 
