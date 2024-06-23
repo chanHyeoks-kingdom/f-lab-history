@@ -12,6 +12,7 @@
 
 
 
+## 이주의 이론 학습 주제
 ```
 Scale-up vs Scale-out 전략을 비교하시오
 On-prem vs Cloud native vs Hybrid vs Multi-cloud 환경을 비교하시오
