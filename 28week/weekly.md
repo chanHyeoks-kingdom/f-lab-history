@@ -17,6 +17,117 @@
 이런 클래스 정보들은 JVM의 메서드 영역에 저장되어 있는 것들을 가져오는 것이고 이를 통해 `코드 컴파일 시점이 아니라 런타임 시점에 클래스 정보를 변경할 수 있다`
 
 
+- ### 예시 케이스
+```
+public class Human {
+
+    private String name;
+
+    public Human(String name){
+        this.name = name;
+    }
+
+    private Human(){
+
+    }
+
+    public void goRestRoom(){
+        System.out.println(name +"이 화장실로 갑니다.");
+    }
+
+    public void offPants(){
+        System.out.println(name +"이 바지를 내립니다.");
+    }
+
+    public void doWork(){
+        System.out.println(name + "이 볼일을 봅니다.");
+        poopOut();
+    }
+
+    private void poopOut(){
+        System.out.println("똥이 나왔습니다.");
+    }
+}
+```
+
+```
+Class<?> class1 = Class.forName("org.example.reflection.Human");
+
+Constructor<?> constructor = class1.getConstructor(String.class);
+Object human = constructor.newInstance("승갱이");
+
+Method goRestRoomMethod = class1.getDeclaredMethod("goRestRoom");
+Method offPantsMethod = class1.getDeclaredMethod("offPants");
+Method doWorkMethod = class1.getDeclaredMethod("doWork");
+Method poopOutMethod = class1.getDeclaredMethod("poopOut");
+
+poopOutMethod.setAccessible(true);
+poopOutMethod.invoke(human);
+goRestRoomMethod.invoke(human);
+offPantsMethod.invoke(human);
+doWorkMethod.invoke(human);
+```
+
+![image](https://github.com/user-attachments/assets/e92aa41e-64d2-47aa-a1f3-e026047bc124)
+
+
+<br>
+<br>
+
+위 예시코드를 보면 private로 정의되어있던 똥싸기를 동적으로 변경해 외부에서 호출토록 했다. 덕분에 화장실 가기 전에 똥을 쌀 수 있게 됐다.
+이제 좀 더 실제적인 예시인 JSON Mapper와 DI의 예시를 보자.
+
+
+<br> 
+
+- ### JSON 예시
+```
+import java.lang.reflect.Field;
+import org.json.JSONObject;  // org.json 라이브러리를 사용
+
+public class JsonToJavaReflection {
+    public static void main(String[] args) {
+        String jsonStr = "{\"name\":\"John\", \"age\":30}";
+        JSONObject jsonObject = new JSONObject(jsonStr);
+        User user = new User();
+
+        try {
+            for (Field field : User.class.getDeclaredFields()) {
+                field.setAccessible(true);  // private 필드에 접근 가능하도록 설정
+                String fieldName = field.getName();
+                Object value = jsonObject.get(fieldName);
+
+                // 필드 타입에 맞게 값을 변환하고 할당
+                if (field.getType() == int.class) {
+                    field.setInt(user, (Integer) value);
+                } else if (field.getType() == String.class) {
+                    field.set(user, (String) value);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // 결과 출력
+        System.out.println("User Name: " + user.getName());
+        System.out.println("User Age: " + user.getAge());
+    }
+}
+```
+
+위 처럼 JsonMapper를 만들려면 결국 `특정 필드의 private 설정을 무시하고 조회, 값 저장을 할 수 있어야 한다`던가 어떤 필드에 값을 세팅해야 하는지 해당 필드 명들을 받아올 수 있어야한다. 이 때 리플렉션이라는 개념이 필요하다.
+
+* 결국 리플렉션은 클래스 정보를 실제 실행 환경에서 변경하기 위해 수행하는 조회, 수정 모든 작업을 포괄하는 개념이다.
+
+
+
+
+
+
+
+
+
+
 
 
 
