@@ -1,3 +1,6 @@
+<img width="463" alt="image" src="https://github.com/user-attachments/assets/67209a01-1bc4-473a-a17d-8937f0c14240">
+
+리플렉션의 단점?, 성능상의 문제 등 .. 추가 질문 고민하기
 
 ```
 질문 리스트
